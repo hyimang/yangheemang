@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/* 모바일용 스타일지정 시작 */
+/* 헤더 영역 시작*/
+.header {
+height:80px;
+position:relative;/*상대적인 위치, 반대는 absolute 절대적인 위치=fixed붙박이*/
+padding:0px 2%;/*안쪽여백: padding, 바깥여백: margin. 18px=상하여백, 5%=좌우여백*/
+/*padding:18px 5% 18px 5%; 의 약자, 시계방향으로 진행되며 위쪽부터 시작 
+만약 padding:18px 5% 18px; 3가지 방법 모두 동일.=18px(상,하 여백) 5%(좌우 여백)
+*/
+}
+.header .logo{
+float:left;/*float: 떠다니는 영역, 역할: 세로배치를 가로배치로 변경 처리에 사용됨*/
+}
+.header .logo a {
+font-size:26px;
+color:#47d4c9;
+font-weight:normal;/*글꼴두께*/
+text-indent:-9999%;/*들여쓰기*/
+display:block;
+height:80px;
+background:url(/resources/sample/img/rocket.png) no-repeat;/*배경이미지 기본이 반복repeat*/
+background-size:60%;
+background-position:0px center;/*배경위치는 0px(가로) center(세로)*/
+}
+.header .menu-toggle-btn { /*toggle:똑딱이버튼*/
+float:right;
+width:20px;
+margin-top:30px;
+cursor:pointer;/*마우스커서 모양을 손모양으로 변경*/
+}
+.menu-toggle-btn span {
+display:block; 
+width:100%; /*여기서100% .menu-toggle-btn영역의 가로20px까지가 100%*/
+height:2px; background-color:#47d4c9;
+margin-bottom:5px;
+}
+.header .gnb {
+display:none;/*페이지로딩할 때 숨겨야하기 떄문에 none으로 처리*/
+position:absolute;/*gnb영역의 위치를 절대위치로 지정, 위치정보가 필요*/
+top:80px;
+left:0px;
+width:100%;
+background:#47d4c9;
+z-index:21;/*화면에서 콘텐츠가 겹치는 경우, z인덱스*/
+}
+.header .gnb li {
+/*solid:실선*/
+border-bottom:1px solid #e0e0e0;
+}
+/*가상선택자 : 사용*/
+.header .gnb li:last-child{
+border-bottom:0px solid #e0e0e0
+}
+.header .gnb li a {
+display:block;/*1줄 전체 자리를 차지하는 영역, inline-block 자리를 차지하지만, 본인크기만큼*/
+padding:14px 0px 14px 5%;
+font-size:14px;
+color:#ffffff;
+}
+/* 헤더 영역 끝*/
+/* 본문 섹션 슬라이드 영역 시작*/
+#wrap .slider img {width:100%;} /*Cascade Style Sheet 특징 계단형 스타일지정*/
+/* 본문 섹션 슬라이드 영역 끝*/
+/* 푸터영역 시작*/
+.footer {
+margin-top: 30px;
+}
+.footer p {
+margin: 21px 0px;
+color:#47d4c9;
+text-align:center;
+font-weight:bold;
+}
+/* 푸터영역 끝*/
+/* 모바일용 스타일지정 끝 */
