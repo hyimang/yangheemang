@@ -14,6 +14,9 @@
 - 3. CSS 적용하기: 자바스크립트 작업 포함
 - 4. CSS 분리하기: 테스트 후 마무리
 
+- alter: Alt 교체하다는 의미. Alter table 명령DB
+	- Alt: 이미지가 나오지 않을 때, 대체(대신)로 나오는 문자.
+- 로렘 입숨(lorem ipsum; 줄여서 립숨, lipsum)
 
 #### 20201119(목)
 - index.html 더미데이터에 모바일용 CSS적용
