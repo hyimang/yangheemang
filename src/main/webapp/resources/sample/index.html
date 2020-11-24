@@ -21,10 +21,28 @@
 /*@미디어쿼리 사용-메타태그 viewport값 필수*/
 /*태블릿용 스타일 시작*/
 /*미디어쿼리: 미디어의 가로크기가 768px 이상이면 스타일 적용*/
-@media all and (max-width:768px) {
+@media all and (min-width:768px) {
 
 /*헤더영역 시작*/
-
+.menu-toggle-btn {display:none;}
+.header .gnb {
+display:block;
+position:static;/*absolte에서 static*/
+background:none;
+width:auto;
+float:right;/*가로위치를 오른쪽으로 변경*/
+margin-top:10px;
+}
+.header .gnb li {
+float:left;
+border:none;
+width:95px;
+}
+.header .gnb li a {
+color:#404040;
+text-align:center;
+}
+.header .gnb li a:hover {text-decoration:none;}
 /*헤더영역 끝*/
 /*슬라이드영역 시작*/
 .carousel-item, .carousel-item img {height:500px;}

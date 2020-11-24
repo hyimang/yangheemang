@@ -1,5 +1,5 @@
 @charset "UTF-8";
 /*미디어쿼리: 미디어의 가로크기가 768px 이상이면 스타일 적용*/
-@media all and (max-width:768px) {
+@media all and (min-width:768px) {
 	
 }
