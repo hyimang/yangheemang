@@ -51,3 +51,15 @@ float:left;/*세로배치를 가로배치로 변경*/
 width:50%;
 }
 /*work 영역 끝*/
+
+/*blog 영역 시작*/
+.blog-section li {
+float:left;
+width:31.59722222222%;/*(242px/768px)x100%=31.59722222%*/
+margin-left:2.60416666666%;
+}
+.blog-section li:first-child {/*마지막 li가 아래로 떨어지는 것을 방지하는 역할*/
+margin-left:0px;
+}
+.blog-section hr {display:none;}
+/*blog 영역 끝*/

@@ -1,8 +1,9 @@
 @charset "UTF-8";
 /* 모바일용 스타일지정 시작 */
-body {/*reset에서 초기화된 것을 재정의할때*/
+body {/*reset.css 또는 부트스트랩css에서 초기화된 것을 재정의할때*/
 font-size:12px;
-background:#ffffff;	
+background:#ffffff;
+line-height:1.4;/*상속 바로전에 적용한 값을 초기화inherit 시키는 역할*/	
 }/*부트스트랩css영향을 받은 것을 무효화시키고, 사용자css로 적용*/
 /* 헤더 영역 시작*/
 .header {
