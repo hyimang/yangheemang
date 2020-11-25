@@ -25,6 +25,10 @@ color:#404040;
 .header .gnb li a:hover {text-decoration:none;}
 /*헤더영역 끝*/
 
+/*슬라이드영역 시작*/
+.carousel-item, .carousel-item img {height:500px;}
+/*슬라이드영역 끝*/
+
 /*we are 영역 시작*/
 .float-clear {clear:both;}/*clear 속성은 float 작동을 없애는 역할 7.1249+94.4166=102.xx*/
 .weare-body li {
@@ -41,6 +45,9 @@ margin-left:0px;
 }
 /*we are 영역 끝*/
 
-/*슬라이드영역 시작*/
-.carousel-item, .carousel-item img {height:500px;}
-/*슬라이드영역 끝*/
+/*work 영역 시작*/
+.work-section li{
+float:left;/*세로배치를 가로배치로 변경*/
+width:50%;
+}
+/*work 영역 끝*/
