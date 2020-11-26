@@ -61,6 +61,11 @@ margin-left:2.60416666666%;
 .blog-section li:first-child {/*마지막 li가 아래로 떨어지는 것을 방지하는 역할*/
 margin-left:0px;
 }
+.blog-section li:nth-child(3n+1) {
+/*1,4,7,10,13..번째만 적용
+n번째 인덱스값이기 때문에 0부터 시작. 3n+1=1*/
+margin-left:0px;
+}
 .blog-section hr {display:none;}
 /*blog 영역 끝*/
 
