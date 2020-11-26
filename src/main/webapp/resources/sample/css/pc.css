@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/*pc용 스타일 시작*/
+/*미디어쿼리: 미디어의 가로크기가 1132px 이상이면 스타일 적용*/
+@media all and (min-width:1132px) {
+
+/*슬라이드 영역 시작*/
+.carousel-item, .carousel-item img {height:700px;}
+/*슬라이드 영역 끝*/
+
+/*weare 영역 시작*/
+.weare-header {
+margin:0 3%;
+margin-top:30px;
+text-align:left;
+}
+.weare-header .section-title {
+float:left;
+width:50%;
+}
+.weare-header p {
+float:right;
+width:50%;
+position:relative;
+padding-left:20px;/*p태그내용을 상대위치로 배치*/
+}
+.weare-header p::before {/*p태그앞에 가상요소로 도형하나 만들기. 참고, a:hover 가상클래스*/
+position:absolute;
+top:7px;
+left:0px;
+width:2px;
+height:40px;
+background:#ccc;
+content:"";/*도형만 만들고 내용은 비공간으로 처리*/
+}
+/*weare 영역 끝*/
+
+/*pc용 스타일 끝*/
