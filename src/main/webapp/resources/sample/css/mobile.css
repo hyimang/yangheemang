@@ -216,7 +216,7 @@ font-weight:normal;
 }
 .contact-section .containar {
 width:90%;
-margin:0px auto;
+margin:0 auto;
 margin-top:30px;
 }
 .contact-section label {
@@ -228,7 +228,7 @@ line-height:1.2;
 padding:0 2px;
 height:40px;
 border:none;
-border-bottom:2px solid #ccc;/*테두리 선설정: 2px 굵기, solid실선, dotted점선, 선색상*/
+border-bottom:1px solid #ccc;/*테두리 선설정: 2px 굵기, solid실선, dotted점선, 선색상*/
 background:transparent;/*배경색상 투명*/
 }
 .contact-section form textarea {
@@ -236,7 +236,7 @@ width:100%;
 background:transparent;
 line-height:1.2;
 border:none;
-border-bottom:2px solid #ccc;
+border-bottom:1px solid #ccc;
 min-height:100px;/*최소높이를 지정한느 이유는 내요이 없더라도 높이를 150px로 고정하는 의미*/
 padding-top:10px;
 padding-bottom:10px;

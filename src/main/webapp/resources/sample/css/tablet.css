@@ -59,11 +59,14 @@ width:31.59722222222%;/*(242px/768px)x100%=31.59722222%*/
 margin-left:2.60416666666%;
 height:300px;
 }
-.blog-section li div {
+.blog-section li preview {
 height:200px;
 overflow:hidden;
 /*min-height:200px;이미지 최소높이 지정*/
 /*max-height:200px;이미지 최대높이 지정*/
+}
+.blog-section info2 {
+padding:10px;
 }
 .blog-section li:first-child {/*마지막 li가 아래로 떨어지는 것을 방지하는 역할*/
 margin-left:0px;
