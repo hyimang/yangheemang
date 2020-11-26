@@ -42,4 +42,19 @@ margin-left:3%;
 .work-section li {width:25%;}/*100%/4*/
 /*work영역 끝*/
 
+/*blog 영역 시작*/
+.blog-section {
+margin-left:3%;
+margin-right:3%;
+}
+.blog-section h1 {
+float:left;
+margin-top:30px;
+}
+.blog-section .container {
+float:right;
+width:80%;
+}/*li태그에 적용했던 방식이라면 float:left;*/
+/*blog 영역 끝*/
+
 /*pc용 스타일 끝*/
