@@ -7,7 +7,7 @@
 .carousel-item, .carousel-item img {height:700px;}
 /*슬라이드 영역 끝*/
 
-/*weare 영역 시작*/
+/*weare 영역 시작*/ 
 .weare-header {
 margin:0 3%;
 margin-top:30px;
@@ -33,5 +33,13 @@ background:#ccc;
 content:"";/*도형만 만들고 내용은 비공간으로 처리*/
 }
 /*weare 영역 끝*/
+
+/*work영역 시작*/
+.work-section .section-title {
+text-align:left;
+margin-left:3%;
+}
+.work-section li {width:25%;}/*100%/4*/
+/*work영역 끝*/
 
 /*pc용 스타일 끝*/
