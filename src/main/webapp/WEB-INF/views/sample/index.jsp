@@ -19,6 +19,9 @@
 - 패키지 사용 이유: 자바클래스를 기능별로 묶어놓기 위해서 명시적으로 만듦<br> -->
 
 <%@ include file="./include/header.jsp" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 위 부트스트랩 코어 -->
 
 <section><!-- division디비전이라는 div 영역표시 태그 대신에 사용-->
 <!-- 본문 슬라이드 영역 시작 -->
