@@ -1,5 +1,15 @@
-#### 20201126(목)
+#### 20201127(금)
+- home.jsp 결과물을 헤로쿠 클라우드에 업로드
+	http://yangheemang.herokuapp.com
+	
+- /resources/sample/반응형페이지: 퍼블리셔가 만들어 준것 배치하는 공간
+- WEB-INF/views 폴더에 개발한 결과를 배치
 
+----------------------------------------
+
+
+#### 20201126(목)
+반응형 웹페이지 작업완
 
 #### 20201125(수)
 - HTML(Hyper Text Markup-Language)+CSS(Cascade-Style-Sheet)+JS(JavaScript)=퍼블리셔, 프론트엔드 개발자
