@@ -3,6 +3,10 @@
 	http://yangheemang.herokuapp.com
 ----------------------------------------	
 - /resources/sample/반응형페이지: 퍼블리셔가 만들어 준것 배치하는 공간
+	^위 같은 콘텐츠는 Static콘텐츠 (static은 고정적인 내용-html,css,js,img)
+	- Static콘텐츠 <-> Dynamic동적콘텐츠(jsp프로그램으로 콘텐츠 내용이 수시로 변경되는 영역)
+	- Dynamic 예: 게시판(게시물을 등록하면, 콘텐츠가 동적으로 늘어남)
+
 - WEB-INF/views 폴더에 개발한 결과를 배치
 - WEB-INF/views/sample폴더 생성후 index.jsp
 - 컨트롤러 자바클래스에서 외부에서 /접근시 index.jsp로 매핑시킴
