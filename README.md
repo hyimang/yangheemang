@@ -1,10 +1,14 @@
 #### 20201127(금)
 - home.jsp 결과물을 헤로쿠 클라우드에 업로드
 	http://yangheemang.herokuapp.com
-	
+----------------------------------------	
 - /resources/sample/반응형페이지: 퍼블리셔가 만들어 준것 배치하는 공간
 - WEB-INF/views 폴더에 개발한 결과를 배치
-
+- WEB-INF/views/sample폴더 생성후 index.jsp
+- 컨트롤러 자바클래스에서 외부에서 /접근시 index.jsp로 매핑시킴
+- 퍼블리셔가 만든 index.html 복사해서 index.jsp 붙여넣기
+- jsp분리작업: include폴더 생성 후 그안에 header.jsp,footer.jsp 2개 만듦
+- index.jsp에서 header.jsp,footer.jsp에 들어갈 영역 Cut해서 붙여넣기
 ----------------------------------------
 
 
