@@ -3,7 +3,8 @@
 body {/*reset.css 또는 부트스트랩css에서 초기화된 것을 재정의할때*/
 font-size:12px;
 background:#ffffff;
-line-height:1.4;/*상속 바로전에 적용한 값을 초기화inherit 시키는 역할*/	
+line-height:1.4 !important;/*상속 바로전에 적용한 값을 초기화inherit 시키는 역할*/
+font-family:'Malgun Gothic', dotum, sans-serif !important;	
 }/*부트스트랩css영향을 받은 것을 무효화시키고, 사용자css로 적용*/
 /*부트스트랩css영향을 받는 부분을 무효화시키기(아래)*/
 ul {
