@@ -65,5 +65,7 @@ $(document).ready(function(){
 <li><a href="javascript:alert('관리자단 준비중입니다.')">AdminLTE</a></li>
 </ul>
 </nav>
+
 <!-- 상단 로고와 햄버거 메뉴영역 끝 -->
 </header>
+</div>

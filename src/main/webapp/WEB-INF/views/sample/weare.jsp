@@ -15,9 +15,9 @@
 <ul>
 <li>
 <a href="javascript:;"><!-- a링크 태그의 가상링크# 대신에 javascript:; 입니다. -->
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리 게시물1">
-<h2>갤러리 제목1</h2>
-<p>갤러리 게시물1의 내용입니다. 여러분 환영합...</p>
+<img src="/resources/sample/img/same.jpg" alt="갤러리 게시물1">
+<h2>수평적인 조직 문화</h2>
+<p>닉네임을 호칭으로 사용하여<br>자유로운 의사소통이 가능합니다.</p>
 </a>
 </li>
 <li>

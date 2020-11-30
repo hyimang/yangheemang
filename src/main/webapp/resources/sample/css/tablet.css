@@ -2,13 +2,13 @@
 /*미디어쿼리: 미디어의 가로크기가 768px 이상이면 스타일 적용*/
 @media all and (min-width:768px) {
 /*공통사항 시작*/
-ul {text-align:conter;}
+ul {text-align:center;}
 /*공통사항 끝*/
 /*헤더영역 시작*/
 .menu-toggle-btn {display:none;}
 .header .gnb {
 display:block;
-position:static;/*absolte에서 static*/
+position:static;/*absolute에서 static*/
 background:none;
 width:auto;
 float:right;/*가로위치를 오른쪽으로 변경*/

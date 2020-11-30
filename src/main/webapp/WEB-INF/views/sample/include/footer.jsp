@@ -6,6 +6,5 @@
 <p>MINT ROCKET</p><!-- Paragraph 문장영역 태그 -->
 <!-- 하단 로고 영역 끝 -->
 </footer>
-</div>
 </body>
 </html>

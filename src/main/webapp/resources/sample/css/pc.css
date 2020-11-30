@@ -2,7 +2,6 @@
 /*pc용 스타일 시작*/
 /*미디어쿼리: 미디어의 가로크기가 1132px 이상이면 스타일 적용*/
 @media all and (min-width:1132px) {
-
 /*슬라이드 영역 시작*/
 .carousel-item, .carousel-item img {height:700px;}
 /*슬라이드 영역 끝*/
