@@ -1,3 +1,10 @@
+#### 20201201(화)
+- AdminLTE로 만드는 스프링 관리자 메인 화면구현 마무리.
+- 관리자관리: member_list.html, member_view.html, member_write.html
+- 게시물관리: board_list.html, board_view.html, board_write.html
+- 관리자단 html 화면 구현한 내용을 jsp 만들어서 컨트롤러 자바클래스에서 링크만 걸어줄 것
+-외부라이브러리 상대경로를 절대경로로 변경
+
 #### 20201130(월)
 - 나눔고딕 폰트 불러올 때, mobile.css만 적용해도 모두 적용됨
 	html,css,js는 소스라인 위쪽에서 아래로 적용, mobile.css가 제일 상단에 있기에 아래 tablet,pc에도 모두 적용됨
@@ -23,7 +30,7 @@
 
 - 1. AdminLTE 파일을 압축 해제 후, 폴더(dist,pages,plugins),index1,2,3.html 6개 resources폴더에 붙여놓기
 	- 프로트엔드단 대세 중 2가지 플러그인(자바스크립트템플릿)위에 포함되어 있음
-1. 부트스트랩	2.chart(빅데이터 시각화할떄 사용 JS템플릿)
+1. 부트스트랩	2. chartJS(빅데이터 시각화할떄 사용 JS템플릿)
 
 - plugins중 ;문장 끝 바로앞에 ,가 존재하면 에러표시가 나옴.
 	자바스크립트 버전, es5(2015년 js버전) 이전버전에서만 에러, es6(2016년 js버전)은 에러 발생X
