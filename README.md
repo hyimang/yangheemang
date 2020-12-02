@@ -1,3 +1,6 @@
+#### 20201202(수)
+- 저장소 이름: 변수(내용에 변하는 값을 java로 불러옴)/상수(내용에 정해진 값이 불러옴)
+
 #### 20201201(화)
 - AdminLTE로 만드는 스프링 관리자 메인 화면구현 마무리.
 - 관리자관리: member_list.html, member_view.html, member_write.html
