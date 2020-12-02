@@ -1,5 +1,11 @@
 #### 20201202(수)
 - 저장소 이름: 변수(내용에 변하는 값을 java로 불러옴)/상수(내용에 정해진 값이 불러옴)
+- 부트스트랩참조: http://localhost:8080/resources/pages/forms/general.html
+- admin/include/header.jsp의 메뉴링크르 html상대경로에서 Admin컨트롤러의 절대경로로 변경처리
+- 상대경로: ./(현재폴더위치), ../(상위폴더위치), 파일위치를 지정할 때 사용. return(스프링반환값)
+- 절대경로: URL경로(웹브라우저로 접근가능한 경로)를 사용할 때. @RequestMapping에서(스프링)
+- admin폴더에는 2가지 기능:관리자관리(member폴더), 게시물관리(board폴더)
+-jsp파일에서 폼action속성값 이동==button타입 submit값, 링크경로를 html경로에서 컨트로러의 바인딩경로로 변경
 
 #### 20201201(화)
 - AdminLTE로 만드는 스프링 관리자 메인 화면구현 마무리.
