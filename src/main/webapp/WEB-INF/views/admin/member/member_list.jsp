@@ -34,7 +34,7 @@
 
                 <div class="card-tools">
                   
-                  <form name="search_form" action="/admin/member_list" method="get">
+                  <form name="search_form" action="/admin/member/member_list" method="get">
                   <div class="input-group input-group-sm">
                   <!-- 부트스트랩 템플릿만으로는 디자인처리 부족한 경우가 있기 때문에 위와 같은 인라인 스타일 사용 -->
                    <div>
@@ -72,7 +72,7 @@
                   </thead>
                   <tbody>
                     <tr onclick="javascript:location.href='/admin/member_view?user_id=admin';" style="cursor:pointer;">
-                      <td><a href="/admin/member_view?user_id=admin">admin</a></td>
+                      <td><a href="/admin/member/member_view?user_id=admin">admin</a></td>
                       <!-- 위에 a링크값은 리스트가 늘어날 수록 동적으로 user_id값이 변하게 됩니다. jsp로 처리 -->
                       <td>관리자</td>
                       <td>admin@abcd.com</td>
@@ -82,7 +82,7 @@
                       <!-- 권한표시는 부트스트랩 뱃지 클래스 사용 -->
                     </tr>
                     <tr>
-                      <td><a href="/admin/member_view?user_id=user">user</a></td>
+                      <td><a href="/admin/member/member_view?user_id=user">user</a></td>
                       <td>사용자</td>
                       <td>user@abcd.com</td>
                       <td>false</td>
@@ -99,7 +99,7 @@
             
             <!-- 버튼영역 시작 -->
               <div class="card-body text-center">
-              <a href="/admin/member_write" class="btn btn-primary float-right">CREATE</a>
+              <a href="/admin/member/member_write" class="btn btn-primary float-right">CREATE</a>
               <!-- 부트스트랩 디자인 버튼 클래스를 이용해서 a태그를 버튼 모양 만들기 -->
               <!-- btn클래스명이 버튼모양을 만들고, btn-primary클래스명은 버튼 색상을 변경한느 역할 -->
 				</div>

@@ -6,8 +6,8 @@
 <section class="weare-header">
 <h1 class="section-title">We are</h1>
 <p>
-"휴먼 교육센터 디지털 컨버전스 과정입니다."<br><!-- break return =줄바꿈태그 -->
-"그리고, 지금은 화면 설계 시간입니다."
+"안녕하세요 민트로켓입니다."<br><!-- break return =줄바꿈태그 -->
+"우리는 새로운 가치를 창조하는 기업입니다."
 </p>
 </section>
 <!-- 갤러리 게시판에서 가져오는 데이터 4개 반복영역 -->
