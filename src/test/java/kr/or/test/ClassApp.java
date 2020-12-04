@@ -18,12 +18,38 @@ public class ClassApp {
 		Employee employee = new Employee();
 		Salesman salesman = new Salesman();
 		Development development = new Development();
-		employee.doJob();
-		salesman.doJob();
-		development.doJob();
+		//employee.doJob();
+		//salesman.doJob();
+		//development.doJob();
+		GraphicObject graphicObject = new Triangle();
+		graphicObject.draw();
 	}
 
 }
+
+
+//메서드 오버라이드(메서드이름이 같은 것을 실행-상속관계) 와
+//메서드 오버로드(한개의 클래스에서 매서드 이름은 고유값이라서 중복해서 사용할 수 없음. 단, 매개변수(인자값)이 다르면 가능합니다
+
+//추상클래스에 대한 연습
+//추상클래스 또는 인터페이스를 사용하는 목적은 두꺼운 책에서 목차를 만드는것과 독같은 역할
+abstract class GraphicObject {
+	int x,y;//그래픽오브젝트 클래스 멤버변수 선언
+	abstract void draw();//명세표만 있고 구현내용이 없는(인터페이스) 추상메서드 선언
+	//다른 해석하면, 책에서 목차만 잇고, 내용이 없는 구조. 내용은 별도의 클래스에 있음
+}
+class Triangle extends GraphicObject {
+
+	@Override
+	void draw() {
+		System.out.println("  *");
+		System.out.println(" * * ");
+		System.out.println("*****");
+		
+	}
+	
+}
+
 //클래스 상속에 대한 연습
 class Employee {//회사의 모든 직원들 클래스
 	int nSalary;//회사직원 봉급변수 멤버변수
