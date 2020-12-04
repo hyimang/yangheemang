@@ -5,7 +5,7 @@
 	s3 = "일반변수값입니다.";
 - 기본형변수 예: String s3 = "일반변수값입니다.";//일반변수는 이 방식을 사용, 클래스형 new키워드로 생성한 인스턴스 변수를 주로 사용. 
 - 단, 스프링에선 new키워드로 만드는 인스턴스 클래스변수보단 사용방법이 간단한 인젝트 방식의 변수를 사용.(스프링 DI-Dependency Injection)
-- 객체지향 프로그래밍: Object Oriented Programming 인스턴스(실행가능한 클래스)를 사용하는 프로그램.
+- 객체지향 프로그래밍(OOP): Object Oriented Programming 인스턴스(실행가능한 클래스)를 사용하는 프로그램.
 - new 키워드로 만드는 오브젝트를 사용하는 방식이 필수.(트랜드는 아님)
 - new String()처럼 클래스이름과 똑같은 메서드를 생성자 메서드라고 한다.
 - abstract(추상)클래스/메서드 예: abstract class calc { add(){}; }
