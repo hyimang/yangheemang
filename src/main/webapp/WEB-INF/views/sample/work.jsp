@@ -11,7 +11,7 @@
 <h2>갤러리제목1</h2>
 <p>갤러리게시물1번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지1">
+<img src="/resources/sample/img/work1.jpg" alt="갤러리게시판2 이미지1">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -19,7 +19,7 @@
 <h2>갤러리제목2</h2>
 <p>갤러리게시물2번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지2">
+<img src="/resources/sample/img/work2.jpg" alt="갤러리게시판2 이미지2">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -27,7 +27,7 @@
 <h2>갤러리제목3</h2>
 <p>갤러리게시물3번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지3">
+<img src="/resources/sample/img/work3.jpg" alt="갤러리게시판2 이미지3">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -35,7 +35,7 @@
 <h2>갤러리제목4</h2>
 <p>갤러리게시물4번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지4">
+<img src="/resources/sample/img/work4.jpg" alt="갤러리게시판2 이미지4">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -43,7 +43,7 @@
 <h2>갤러리제목5</h2>
 <p>갤러리게시물5번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지5">
+<img src="/resources/sample/img/work1.jpg" alt="갤러리게시판2 이미지5">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -51,7 +51,7 @@
 <h2>갤러리제목6</h2>
 <p>갤러리게시물6번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지6">
+<img src="/resources/sample/img/work2.jpg" alt="갤러리게시판2 이미지6">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -59,7 +59,7 @@
 <h2>갤러리제목7</h2>
 <p>갤러리게시물7번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지7">
+<img src="/resources/sample/img/work3.jpg" alt="갤러리게시판2 이미지7">
 </a></li>
 <li>
 <a href="javascript:;">
@@ -67,7 +67,7 @@
 <h2>갤러리제목8</h2>
 <p>갤러리게시물8번의 내용입니다.여러분 환영...</p>
 </div>
-<img src="/resources/sample/img/puzzle.jpg" alt="갤러리게시판2 이미지8">
+<img src="/resources/sample/img/work4.jpg" alt="갤러리게시판2 이미지8">
 </a></li>
 </ul>
 </section>

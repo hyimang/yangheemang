@@ -11,7 +11,7 @@
 	<div class="preview"><img src="/resources/sample/img/cup.jpg" alt="블로그이미지1"></div>
 	<div class="info2">
 	<time datetime="2020-11-23">2020-11-23</time>
-	<h2>블로그 게시물 제목1</h2>
+	<h2>2020년 브랜드 평판 1위 수여</h2>
 	</div>
 	</a>
 	</li>
@@ -21,7 +21,7 @@
 	<div class="preview"><img src="/resources/sample/img/award.jpg" alt="블로그이미지2"></div>
 	<div class="info2">
 	<time datetime="2020-11-23">2020-11-23</time>
-	<h2>블로그 게시물 제목2</h2>
+	<h2>기업 프레젠테이션 우승</h2>
 	</div>
 	</a>
 	</li>
@@ -31,7 +31,7 @@
 	<div class="preview"><img src="/resources/sample/img/medals.jpg" alt="블로그이미지3"></div>
 	<div class="info2">
 	<time datetime="2020-11-23">2020-11-23</time>
-	<h2>블로그 게시물 제목3</h2>
+	<h2>소비자 만족도 조사 1위 기업 선정</h2>
 	</div>
 	</a>
 	</li>
