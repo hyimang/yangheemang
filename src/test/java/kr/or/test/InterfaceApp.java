@@ -9,7 +9,7 @@ public class InterfaceApp {
 		allCalc.sub(5, 5);
 		allCalc.mul(5, 5);
 		allCalc.div(5, 5);
-
+		//메서드를 호출할때, 5,5/10,10 이렇게 매개변수가 고정되지 않고 동적으로 묶이는 방식이 동적 바인딩
 	}
 
 }

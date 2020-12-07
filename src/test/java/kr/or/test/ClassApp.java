@@ -23,6 +23,7 @@ public class ClassApp {
 		//development.doJob();
 		GraphicObject graphicObject = new Triangle();
 		graphicObject.draw();
+		//new:문자로 되어있는 기호/형식 (더하기와 같음) int sum = 5+3;
 	}
 
 }
@@ -39,8 +40,8 @@ abstract class GraphicObject {
 	//다른 해석하면, 책에서 목차만 잇고, 내용이 없는 구조. 내용은 별도의 클래스에 있음
 }
 class Triangle extends GraphicObject {
-
-	@Override
+	//메서드 오버라이드(메서드이름이 같은 것을 상속관계에서 실행)=부모 메서드 재정의, 대표덕인 다형성을 구현한 것
+	@Override//오버라이드=메서드 재정의:부모의 있는 것들을 다시 적어놓은것
 	void draw() {
 		System.out.println("  *");
 		System.out.println(" * * ");
