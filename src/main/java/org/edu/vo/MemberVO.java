@@ -12,7 +12,7 @@ public class MemberVO {
 	private String user_id;//private: 클래스 내부에서만 사용가능, 보안떄문에
 	private String user_pw;
 	private String user_name;
-	private String emial;
+	private String email;
 	private Integer point;//int(not null)기본형 ->참조형은 Integer(null 가능)클래스
 	//member_write.jsp에서 전송값이 point가 빈값으로 올때, int형 에러발생, Integer형은 에러없음
 	private Boolean enabled;//불린형은 true, false 2개의 값 중 1개
@@ -38,11 +38,12 @@ public class MemberVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getEmial() {
-		return emial;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setEmial(String emial) {
-		this.emial = emial;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public Integer getPoint() {
 		return point;
@@ -76,7 +77,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "디버그 MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", emial=" + emial
+		return "디버그 MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
 				+ ", point=" + point + ", enabled=" + enabled + ", levels=" + levels + ", reg_date=" + reg_date
 				+ ", update_date=" + update_date + "]";
 	}

@@ -1,4 +1,11 @@
 package org.edu.controller;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.edu.vo.MemberVO;
 //스프링에서 사용가능한 클래스를 빈(커피Bean)이라고 하고, @Controller 클래스를 사용하면 됨
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,8 +49,34 @@ public class AdminController {
 				{"admin", "찐관리자","admin@abx.com","true","2020-12-04","ROLE_ADMIN"},
 				{"user","일반사용자","user@abc.com","false","2020-12-04","ROLE_USER"}
 		};
-		//{"user_id":"admin","user_name":"관리자",...} 해시데이터
-		model.addAttribute("members", members);
+		//{"user_id":"admin","user_name":"관리자",...} 해시데이터<키,값>
+		//Map 타입이 부모, HashMap타입 자식클래스. paramMap오브젝트의 확장하기 편하도록 위해서
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id","admin");
+		paramMap.put("user_name","관리자");
+		paramMap.put("age", 40);
+		System.out.println("해시데이터 타입출력" + paramMap);
+		
+		//members 2차원배열 변수를 MemberVo 클래스형 오브젝트로 members_array 변경
+		MemberVO members_input = new MemberVO();
+		members_input.setUser_id("admin");
+		members_input.setUser_name("찐찐관리자");
+		members_input.setEmail("admin@abc.com");
+		members_input.setEnabled(true);//enabled 데이터형(타입)이 boolean형이기 때문에 true,false
+		Date toDay = new Date();
+		members_input.setReg_date(toDay);//데이터 타입이 Date형이기 때문에 java의 날짜데이터를 입력
+		members_input.setLevels("ROLE_ADMIN");
+		members_input.setPoint(10);//point 데이터타입이 Interger형이기 때문에 숫자만 입력
+		//위 members_input 오브젝트에는 1개의 라인만 입력되어 있어서, 이 오브젝트를 배열오브젝트에 저장
+		MemberVO[] members_array = new MemberVO[2];//클래스형 배열 오브젝트 생성/ [2]는 레코드 갯수
+		members_array[0] = members_input;
+		members_array[1] = members_input;
+		//-------------------------------------------------------------------
+		//배열타입으로 보내지 않고, List타입으로 model이용해서 jsp로 보냅니다.
+		List<MemberVO> members_list = Arrays.asList(members_array);
+		//위에서 만든 members_array 배열오브젝트를  Arrays.asList메서드로 List타입으로 변경해서 jsp 보냄
+		System.out.println("List타입의 오브젝트 클래스내용을 출력" + members_list.toString());
+		model.addAttribute("members", members_list);//members 2차원배열을 _array 클래스오브젝트로 변경
 		return "admin/member/member_list";//member_list.jsp로 members변수명으로 데이터를 전송
 	}
 	
