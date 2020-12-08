@@ -18,7 +18,7 @@ public class ExceptionTest {
 		//멤버클래스에 값을 입력해봅니다. 메모리DB에 입력합니다.
 		memberVO.setUser_id("yangheemang");
 		memberVO.setUser_name("양희망");
-		memberVO.setEmial("yangheemang@advb.com");
+		memberVO.setEmail("yangheemang@advb.com");
 		System.out.println("회원정보 클래스의 멤버변수 값들을 출력하기 = "
 		+ memberVO.getUser_name()
 		+ memberVO.toString()
