@@ -51,6 +51,13 @@ public class AdminController {
 		};
 		//{"user_id":"admin","user_name":"관리자",...} 해시데이터<키,값>
 		//Map 타입이 부모, HashMap타입 자식클래스. paramMap오브젝트의 확장하기 편하도록 위해서
+		Map<String,Integer> mapTest = new HashMap<String, Integer>();
+		String ageValue = "40";
+		int ageValue2 = 40;
+		mapTest.put("ageValue2", ageValue2);
+		mapTest.put("age", Integer.parseInt(ageValue) );//제네릭타입을 사용하면, 여기처럼 parseInt형변환을 할 필요가 없기 때문에
+		//제네릭타입의 근본목적은 데이터타입에대해서 명시적인 코딩을 해서 코드를 단순화 시키기 위해서...
+		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("user_id","admin");
 		paramMap.put("user_name","관리자");
