@@ -1,5 +1,33 @@
 #### 20201209(수)
-- 
+- Step3(열거형-Enum형 자료형 클래스 사용) 생성
+--------------------------------------------
+- 전체 틀(아래): 아래 데이터 흐름을 제어하는데 사용
+- 여러명의 회원정보(MemberVO-자료형클래스를 이용 부분)를
+- 전달주고 받고(MainController-메서드, URL호출부분),
+- 출력(MemberService-비즈니스로직부분)하는 메소드 선언하기
+- 데이터베이스 CRUD처리부분(MemberDAO-데이터베이스엑세스부분)
+--------------------------------------------
+- prefix(jstl), suffix(servlet-context.xml)
+	경로의 앞부분, 뒷부분을 생략 가능하게 만드는 역할
+- 아래에서 사용된 prefix 생략가능함
+<beans:property name="prefix" value="/WEB-INF/views/" />
+- 아래에서 사용된 suffix 생략가능함
+<beans:property name="suffix" value=".jsp" />
+- @RequestMapping..반환값에서 prefix(/WEB-INF/views/)가 사용, suffix(.jsp)
+		...
+		return "admin/board/board_list";
+		...
+	}
+
+------------------------------------------
+- 스프링 관리자 AdminLTE 템플릿 샘플
+https://adminlte.io/themes/v3/pages/forms/general.html
+- 스프링 관리자 AdminLTE 템플릿 폰트어썸 아이콘
+https://fontawesome.com/icons?d=gallery
+-------------------------------------
+-RestAPI:Representation 기존데이터를 가지고 화면 깜박임 없이 데이터를 재가공하는 처리/ 수신Ajax기술(프론트)로 처리. API(서버단)
+(빅데이터를 시각화하는 데 RestAPI+Ajax 기술사용)
+- Ajax: Asyncronized Javascript and Xml 비동기 통신으로 자바스크립트으로 Json(text자료)를 재처리하는 기술
 
 #### 20201208(화)
 - 데이터 타입에 대해서 배열타입과 리스트타입, 해시타입
