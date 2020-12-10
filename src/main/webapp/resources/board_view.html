@@ -220,10 +220,12 @@
 	          </div>
 	          </form>
 	          <div class="timeline">
+	          		<!-- .time label의 before위치 -->
 		          <div class="time-label">
 	                <span class="bg-red">Reply List[1]&nbsp;&nbsp;</span>
 	              </div>
-		          <div>
+		          <!-- .time label after 위치 -->
+		          <!-- <div>
 	                <i class="fas fa-envelope bg-blue"></i>
 	                <div class="timeline-item">
 	                  <h3 class="timeline-header">작성자</h3>
@@ -231,13 +233,13 @@
 	                    	댓글 입력 테스트
 	                  </div>
 	                  <div class="timeline-footer">
-	                    <!-- Button trigger modal -->
+	                    Button trigger modal
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
 						  수정
 						</button>
 	                  </div>
 	                </div>
-	              </div>
+	              </div> -->
 	              
 	          </div><!-- //.timeline -->
 	          <!-- 페이징처리 시작 -->
@@ -330,13 +332,11 @@ jstl을 사용하려면, jsp에서 <%@ taglib uri=... 처럼 외부 core를 가�
 <!-- jsp <c:forEach items="${members}" var="member"> 같은 역할 {{#each .}} -->
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
-<div>
+<div class="template-div" date-rno="{{rno}}">
  <i class="fas fa-envelope bg-blue"></i>
  <div class="timeline-item">
-   <h3 class="timeline-header">작성자</h3>
-   <div class="timeline-body">
-     	댓글 입력 테스트
-   </div>
+   <h3 class="timeline-header">{{replyer}}</h3>
+   <div class="timeline-body">{{replytext}}</div>
    <div class="timeline-footer">
      <!-- Button trigger modal -->
 	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
@@ -351,7 +351,10 @@ jstl을 사용하려면, jsp에서 <%@ taglib uri=... 처럼 외부 core를 가�
 <!-- 화면을 재구현Representation하는 함수(아래) -->
 <script>
 var printReplyList = function(data, target, templateObject) {
-	
+	var template = Handlebars.compile(templateObject.html());//위에 each를 html 태그로 변환
+	var html = template(data);//빅데이터를 리스트템플릿에 바인딩(결합)시켜주는 역할. 변수 html에 저장되었음
+	$(".template-div").remove();//화면에 보이는 댓글리스트만 지우기.
+	target.after(html);//targetdms . time-label 클래스 영역을 가리킴.
 };
 </script>
 <!-- 댓글 등록 버튼 액션 처리(아래) -->
@@ -379,18 +382,32 @@ $(document).ready(function() {
 	} );
 });
 </script>
+<!-- 댓글리스트에서 수정버튼을 클릭했을 떄 팝업창이 드는데 팝업창 내용을 동적으로 변경시켜주는 구현 -->
+<script>
+$(document).ready(function(){
+	$(".timeline").on("click", ".template-div", function(){//.template-div 댓글리스트영역
+		//$(this);클릭한 댓글에 따라서 this는 첫번째 댓들일수도 있고, 두번쨰 댓글일수도 있음
+		$("#rno").val($(this).attr("data-rno"));
+		$(".modal-title").html($(this).find(".timeline-header").text());
+		$("#replytext").val($(this).find(".timeline-body").text());
+		//alert("디버그"+ $(this).find(".timeline-body").text());
+		//마우스클릭으로 선택한 댓글의 .timeline-body영역의 text문자를 모달창에 #replytext영역에 값으로 입력
+	});
+});
+</script>
 <!-- Modal -->
 <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">작성자</h5>
+        <h5 class="modal-title" id="exampleModalLabel">작성자</h5><!-- 동적으로 바뀌는 값 위에 클릭액션때문에 -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control" name="modal_text" id="modal_text" placeholder="내용을 입력해 주세요.">
+      	<input type="hidden" name="rno" id="rno" value=""><!-- 상단 $(".timeline").on("click" 액션으로 value값이 채워집니다. -->
+        <input type="text" class="form-control" name="replytext" id="replytext" placeholder="내용을 입력해 주세요.">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
