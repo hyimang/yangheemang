@@ -1,3 +1,10 @@
+#### 20201211(금)
+- junit(JavaUnit)
+- jdbc(JavaDataBaseConnection)사용 pom.xml 의존성 추가.
+- 마이바티스:CRUD쿼리를 관리하는 툴. pom.xml의존성 추가
+----------------------------
+- BoardVO 클래스 만들기: Admin컨트롤러에서 model클래스를 이용해서 jsp로 board_list 데이터셋을 보낼 때 필요한 클래스입니다.
+
 #### 20201210(목)
 - 댓글 관련 디자인 추가 후 Ajax 적용
 
@@ -85,6 +92,7 @@ $(document).ready(function(){
 
 - 첨부파일 등록에 사용되는 form 태그에는 특별한 속성이 추가되어야만 파일전송이 가능
 - 특별한 속성: encType="multipart/form-data" 필수. 파일전송이 포함된 폼에서는 엔코딩타입속성에서 파일분할로 전송해라
+- 일반: erd 만듦 -> 물리DB / 리버스: 물리DB ->erd 만듦
 
 #### 20201209(수)
 - Step3(열거형-Enum형 자료형 클래스 사용) 생성

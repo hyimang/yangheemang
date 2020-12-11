@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 //스프링에서 사용가능한 클래스를 빈(커피Bean)이라고 하고, @Controller 클래스를 사용하면 됨
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 	
 	@RequestMapping(value="/admin/board/board_list",method=RequestMethod.GET)
-	public String board_list() throws Exception {//throws Exception: 스프링으로 예외처리할거 보내기
+	public String board_list(Model model) throws Exception {//throws Exception: 스프링으로 예외처리할거 보내기
+		//테스트용 더미 게시판 데이터 만들기
+		BoardVO input_board = new BoardVO();
+		input_board.setBno(1);
+		input_board.setTitle("첫번째 게시물입니다.");
+		input_board.setContent("첫번째 내용입니다.<br>줄바꿈했습니다.");
+		input_board.setWriter("admin");
+		Date regdate = new Date();
+		input_board.setRegdate(regdate);
+		input_board.setView_count(2);
+		input_board.setReply_count(0);
+		BoardVO[] board_array = new BoardVO[2];
+		board_array[0] = input_board;
+		input_board.setBno(2);//게시물번호만 2로 변경해서 나머지값들 변경없이 아래1레코드 저장
+		board_array[1] = input_board;
+		List<BoardVO> board_list = Arrays.asList(board_array);//배열타입을 List타입으로 변경절차
+		model.addAttribute("boared_list", board_list);
 		return "admin/board/board_list";
 	}
 	//메서드 오버로딩(로딩된 매개변수가 다르면, 메서드이름을 중복가능함. 대표적인 다형성 구현)
