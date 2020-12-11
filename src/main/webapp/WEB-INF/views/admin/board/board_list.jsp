@@ -83,7 +83,7 @@
                       <c:out value="${boardVO.title}"></c:out>[<c:out value="${boardVO.reply_count}"></c:out>]
                       </a></td>
                       <td><c:out value="${boardVO.writer}"></c:out></td>
-                      <fmt:formatDate pattern="yyyy-mm-dd HH:mm" value="${boardVO.regdate}"/>
+                      <td><fmt:formatDate pattern="yyyy-mm-dd HH:mm" value="${boardVO.regdate}"/></td>
                       <td><span class="badge bg-danger">${boardVO.view_count}</span></td>
                       <!-- 권한표시는 부트스트랩 뱃지 클래스 사용 -->
                     </tr>
@@ -99,7 +99,7 @@
             
             <!-- 버튼영역 시작 -->
               <div class="card-body text-center">
-              <a href="board_write.html" class="btn btn-primary float-right">CREATE</a>
+              <a href="/admin/board/board_write" class="btn btn-primary float-right">CREATE</a>
               <!-- 부트스트랩 디자인 버튼 클래스를 이용해서 a태그를 버튼 모양 만들기 -->
               <!-- btn클래스명이 버튼모양을 만들고, btn-primary클래스명은 버튼 색상을 변경한느 역할 -->
 				</div>

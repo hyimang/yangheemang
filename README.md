@@ -4,6 +4,31 @@
 - 마이바티스:CRUD쿼리를 관리하는 툴. pom.xml의존성 추가
 ----------------------------
 - BoardVO 클래스 만들기: Admin컨트롤러에서 model클래스를 이용해서 jsp로 board_list 데이터셋을 보낼 때 필요한 클래스입니다.
+- 쿼리스트링: 쿼리(질의)스트링(문자열) URL에서 쿼리스트링이라고 하면 URL?키1=값1&key2=value2
+- /admin/board/board_view?bno=${boardVO.bno}
+---------------------------------------------------
+- 자바에서 인스턴스 오브젝트를 만들떄, ClassName clasName = new ClassName();오브젝트를 만들엇음
+- 스프링에서 오브젝트를 생성하지않고, 주입한다고 한다. DI(Dependency Injection) 의존성 주입
+- 의존성주입(DI,외부모듈)할때, @Inject 줄바꿈하고 ClassName className;
+- DI방식으로 SecurityCode클래스를 주입받아 unscript메서드를 사용함
+----------------------------------------------------
+- 스프링빈:등록되어서 사용가능하게 된 클래스
+	- 스프링빈 등록 절차: servlet-context.xml 설정파일이 톰캣서버가 실행될때 로딩됨
+- 톰캣서버(WAS)가 실행될때, 로딩 실행되는 파일 순서
+- web.xml 최초실행 
+->1. root-context.xml실행
+->2/ servlet(server+let=서버프로그램)-context.xml 실행
+- component-span 지정한 패키지에 존재한느 클래스를 읽어드림
+@Controller, @Service @Repository, @RestController(Rest-API)
+-----------------------------------------------------
+- 게시판 로직의 핵심: CRUD기본, 검색기능, 페이징처리 로직, 첨부파일기능
+- 게시판 로직 확장: 댓글기능(Rest-API).
+- Rest-API확장기능: 네이버아이디로그인, SNS(페이스북,트위터,구글) 로그인API 
+- Rest-API댓글 컨트롤러1 - RestAPI서버 1개만들기
+-------------------------------------------------
+- 첨부파일 설정: servlet-context.xml에 파일업로드 경로, 업로드용량제한 설정
+- 위에 더해서 외부 의존성 추가: pom.xml메이븐 설정파일 내용 추가. fileupload~.jar
+
 
 #### 20201210(목)
 - 댓글 관련 디자인 추가 후 Ajax 적용
