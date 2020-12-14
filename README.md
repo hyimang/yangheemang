@@ -3,6 +3,21 @@
 - 메이븐으로 빌드: pom.xml 사용(xml태그로 구성)
 - 그래들으로 빌드: build.gradle사용(스크리트로 구성)
 
+- 서블렛 버전을 2.5 ->3.0.1로 변경
+
+```
+<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+```
+- 스프링 테스트 pom.xml 디펜던시 의존성 추가
+- 의존성 추가1. jdbc(Java Database Connection)모듈 추가 후 설정 필수
+- 의존성 추가2. Mysql 모듈 추가 후 설정 필수
+- 의존성 추가3. jdbx와 Mysql 데이터 베이스 중간에 쿼리를 사용한느 역할 Mybatis 모듈 추가
+- Mybatis에는 Select, Insert, Update, Delete 쿼리를 수행하는 역할
+
 
 #### 20201211(금)
 - junit(JavaUnit)
