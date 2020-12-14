@@ -118,6 +118,13 @@
 		</dependency>        
 	
 	<!-- 앞으로 추가되는 프로그램 외부무듈은 아래에 추가예정입니다. -->
+	<!-- 스프링 Test사용 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	
 	<!-- 서버시간 가져오는 모듈 아티팩트= 제작물-->
 	<dependency>
 		<groupId>commons-net</groupId>

@@ -1,3 +1,9 @@
+#### 20201214(월)
+- 스프링 프로젝트의 외부모듈 셋팅파일 2가지
+- 메이븐으로 빌드: pom.xml 사용(xml태그로 구성)
+- 그래들으로 빌드: build.gradle사용(스크리트로 구성)
+
+
 #### 20201211(금)
 - junit(JavaUnit)
 - jdbc(JavaDataBaseConnection)사용 pom.xml 의존성 추가.
