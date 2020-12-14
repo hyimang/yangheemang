@@ -15,8 +15,16 @@
 - 스프링 테스트 pom.xml 디펜던시 의존성 추가
 - 의존성 추가1. jdbc(Java Database Connection)모듈 추가 후 설정 필수
 - 의존성 추가2. Mysql 모듈 추가 후 설정 필수
+- ==================================
+- 위 2가지로 스프링에서 데이터 베이스 커넥션 처리, DriverManagerDataSource(DB커넥션)
+- ==================================
 - 의존성 추가3. jdbx와 Mysql 데이터 베이스 중간에 쿼리를 사용한느 역할 Mybatis 모듈 추가
-- Mybatis에는 Select, Insert, Update, Delete 쿼리를 수행하는 역할
+- 위 1가지 마이바티스로 스프링에서 쿼리를 관리하는 처리
+- ==================================
+- Mybatis에는 Select(), Insert(), Update(), Delete() 쿼리를 수행하는 역할
+- 위 의존성 Mybatis로 스프링에서 쿼리를 호출하는 메서드명(인터페이스)를 처리
+- ==================================
+DataSource(커넥션) - sqlSessionFactory(쿼리생성)-sqlSeesionTemplate(쿼리호출메서드)
 
 
 #### 20201211(금)
