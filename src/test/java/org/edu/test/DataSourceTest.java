@@ -40,6 +40,8 @@ public class DataSourceTest {
 	@Inject
 	IF_MemberDAO memberDAO;
 	
+	@Inject
+	MemberVO memberVO;
 	
 	public String memberPrimaryKey() {
 		//사용자 프라이머리키 생성하는 메서드 년월일시분초+밀리초
@@ -50,8 +52,27 @@ public class DataSourceTest {
 	}
 	
 	@Test
+	public void updateMember() throws Exception{
+		//CRUD 중 Update 테스트 구현 특징, user_id는 프라이머리 키이기 때문에 수정대상이 아님.
+		memberVO.setEmail("test@test.com");
+		memberVO.setUser_name("아무개");
+		String user_id = memberVO.getUser_id();//memberVO의 오브젝트의 데이터는 1개의 레코드이기 때문에 반환값이 1개만 반환
+		
+	}
+	
+	@Test
+	public void readMember() throws Exception{
+		//CRUD 중 Read 테스트 구현
+		MemberVO memberVO = new MemberVO();
+		memberVO = memberDAO.readMember("admin");
+		System.out.println("admin에 대한 상세정보입니다.");
+		System.out.println(memberVO.toString());
+	}
+	
+	@Test
 	public void deletMember() throws Exception{
 		//CRUD 중 Delete 테스트구현(쿼리->DAO->memberDAO주입받은 오브젝트 사용)
+		memberDAO.deletMember("user_20201215145624260");//삭제메서드 ->쿼리 호출
 	}
 	
 	@Test

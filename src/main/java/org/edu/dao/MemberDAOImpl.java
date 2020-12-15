@@ -35,4 +35,10 @@ public class MemberDAOImpl implements IF_MemberDAO {
 		
 	}
 
+	@Override
+	public MemberVO readMember(String user_id) throws Exception {
+		// mapper.xml에 접근하는 방법 .selectOne() sql세션 템플릿 안 메서드임
+		return sqlSession.selectOne("memberMapper.readMember", user_id);
+	}
+
 }
