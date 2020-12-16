@@ -41,7 +41,9 @@ INSERT INTO tbl_member (
 UPDATE tbl_member 
 SET 
     user_name = #{user_name},
+    <if test="user_pw !=''"><!-- !=not, 유저패스워드가 공백이 아닐때 -->
     user_pw = #{user_pw},
+    </if>
     email = #{email},
     point = #{point},
     enabled = #{enabled},
