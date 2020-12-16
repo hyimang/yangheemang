@@ -12,6 +12,9 @@ Mybatis sessionFactory클래스에서 쿼리를 생성함
  -->
 <select id="selectMember" resultType="org.edu.vo.MemberVO">
 select * from tbl_member
+<if test="seach_type !=''">
+where
+</if>
 </select>
 <insert id="insertMember">
 INSERT INTO tbl_member (

@@ -111,7 +111,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/member/member_list", method=RequestMethod.GET)
-	public String member_list(Model model) throws Exception {
+	public String member_list(@RequestParam("search_type") String search_type, @RequestParam("serch_keyword") String search_keyword, Model model) throws Exception {
 		/*
 		 * String[][] members = { {"admin",
 		 * "찐관리자","admin@abx.com","true","2020-12-04","ROLE_ADMIN"},
@@ -143,7 +143,7 @@ public class AdminController {
 		 * Arrays.asList메서드로 List타입으로 변경해서 jsp 보냄
 		 * System.out.println("List타입의 오브젝트 클래스내용을 출력" + members_list.toString());
 		 */
-		List<MemberVO> members_list = memberService.selectMember();
+		List<MemberVO> members_list = memberService.selectMember(search_type,search_keyword);
 		model.addAttribute("members", members_list);//members 2차원배열을 _array 클래스오브젝트로 변경
 		return "admin/member/member_list";//member_list.jsp로 members변수명으로 데이터를 전송
 	}
