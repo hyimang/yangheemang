@@ -111,7 +111,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/member/member_list", method=RequestMethod.GET)
-	public String member_list(@RequestParam("search_type") String search_type, @RequestParam("serch_keyword") String search_keyword, Model model) throws Exception {
+	public String member_list(@RequestParam(value="search_type",required=false) String search_type, @RequestParam(value="search_keyword",required=false) String search_keyword, Model model) throws Exception {
 		/*
 		 * String[][] members = { {"admin",
 		 * "찐관리자","admin@abx.com","true","2020-12-04","ROLE_ADMIN"},

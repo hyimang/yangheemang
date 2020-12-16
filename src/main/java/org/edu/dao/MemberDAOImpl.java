@@ -24,7 +24,7 @@ public class MemberDAOImpl implements IF_MemberDAO {
 		 Map<String, Object> paramMap = new HashMap<String, Object>();
 		 paramMap.put("search_type", search_type);
 		 paramMap.put("search_keyword", search_keyword);
-		return sqlSession.selectList("memberMapper.selectMember",search_type) ;
+		return sqlSession.selectList("memberMapper.selectMember",paramMap) ;
 		//sqlSession템플릿의 selectList메서드를 실행하면, memberMapper.selectMember의 쿼리를 실행하게됨.
 	}
 
