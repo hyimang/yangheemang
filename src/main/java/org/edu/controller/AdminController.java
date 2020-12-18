@@ -11,6 +11,7 @@ import org.edu.service.IF_MemberService;
 import org.edu.util.SecurityCode;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
+import org.edu.vo.PageVO;
 //스프링에서 사용가능한 클래스를 빈(커피Bean)이라고 하고, @Controller 클래스를 사용하면 됨
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -111,7 +112,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/member/member_list", method=RequestMethod.GET)
-	public String member_list(@RequestParam(value="search_type",required=false) String search_type, @RequestParam(value="search_keyword",required=false) String search_keyword, Model model) throws Exception {
+	public String member_list(PageVO pageVO, Model model) throws Exception {
+		//고전적인 방식의 검색 코드 (아래) 
+		//@RequestParam(value="search_type",required=false) String search_type, @RequestParam(value="search_keyword",required=false) String search_keyword
 		/*
 		 * String[][] members = { {"admin",
 		 * "찐관리자","admin@abx.com","true","2020-12-04","ROLE_ADMIN"},
