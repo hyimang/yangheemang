@@ -147,19 +147,18 @@ public class AdminController {
 		 * Arrays.asList메서드로 List타입으로 변경해서 jsp 보냄
 		 * System.out.println("List타입의 오브젝트 클래스내용을 출력" + members_list.toString());
 		 */
-		List<MemberVO> members_list = memberService.selectMember(pageVO);
-		model.addAttribute("members", members_list);//members 2차원배열을 _array 클래스오브젝트로 변경
 		
-		
-		
-		//null/10= 에러처리(아래)
+		//selectMember마이바티스 쿼리를 실행하기 전에 set이 발생해야 변수값이 할당됨(아래)
 		if(pageVO.getPage() == null) {//int일때 null이 에러가 나서 pageVO의 page 변수형Integer로 바꿈
 			pageVO.setPage(1);
 		}
-		
 		pageVO.setPerPageNum(5);
-		pageVO.setPerQueryPageNum(10);//1페이지당 보여줄 회원수 10명으로 입력놓았습니다.
+		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 회원수 10명으로 입력놓았습니다.
 		pageVO.setTotalCount(110);//전체회원의 수를 구한 변수값 매개변수로 입력하는 순간 calcPage()메서드 실행
+
+		List<MemberVO> members_list = memberService.selectMember(pageVO);
+		model.addAttribute("members", members_list);//members 2차원배열을 _array 클래스오브젝트로 변경
+
 		model.addAttribute("pageVO", pageVO);
 		//System.out.println("디버그 스타트페이지는: " +pageVO.getStartPage());
 		//System.out.println("디버그 엔드페이지는: " +pageVO.getEndPage());
