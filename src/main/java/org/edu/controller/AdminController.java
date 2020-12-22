@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdminController {
@@ -101,14 +102,41 @@ public class AdminController {
 	public String member_write() throws Exception {
 		return "admin/member/member_write";
 	}
+	
+	@RequestMapping(value="/admin/member/member_update",method=RequestMethod.GET)
+	public String member_update(@RequestParam("user_id")String user_id, @ModelAttribute("pageVO") PageVO pageVO, Model model) throws Exception {
+		//GET방식으로 업데이트 폼파일만 보여줍니다.
+		MemberVO memberVO = memberService.readMember(user_id);
+		model.addAttribute("memberVO", memberVO);
+		return "admin/member/member_update";
+	}
+	
+	@RequestMapping(value="/admin/member/member_update", method=RequestMethod.POST)
+	public String member_update(PageVO pageVO, MemberVO memberVO) throws Exception {
+		//post방식으로 넘어온 값을 DB수정처리하는 역할
+		memberService.updateMember(memberVO);
+		//redirect를 사용하는 목적은 새로고침 했을때, 위updateMember메서드 재실행방지 목적
+		return "redirect:/admin/member/member_view?page="+pageVO.getPage()+"&user_id=" + memberVO.getUser_id();
+	}
+	
+	@RequestMapping(value="/admin/member/member_delete",method=RequestMethod.POST)
+	public String member_delete(RedirectAttributes rdat, @RequestParam("user_id") String user_id) throws Exception {
+		memberService.deleteMember(user_id);
+		//Redirect로 페이지 이동시 전송값을 숨겨서 보내는 역할 클래스 RedirctAttributes 입니다.
+		rdat.addFlashAttribute("msg", "삭제");
+		return "redirect:/admin/member/member_list";//?success=ok
+	}
+	
 	//member_list.jsp에서 보낸 데이터를 수신하는 역할 @RequestParam("키이름") 리퀘스트파라미터 클래스 사용
 	//현재컨트롤러 클래스에서 member_view.jsp로 데이터를 보내는 역할 Model클래스 사용
 	//member_list => @RequestParam("user_id")수신, Model송신 =>member_view.jsp
 	@RequestMapping(value="/admin/member/member_view",method=RequestMethod.GET)
-	public String member_view(@RequestParam("user_id") String user_id, Model model) throws Exception {
+	public String member_view(@ModelAttribute("pageVO") PageVO pageVO, @RequestParam("user_id") String user_id, Model model) throws Exception {
 		//위에서 수신한 user_id를 개발자가 만든  user_id2이름으로 member_view.jsp 보냅니다
 		//member_view.jsp에서 model로 수신한 데이터 user_id2를 출력하는 방법
-		model.addAttribute("user_id2", user_id + "<script>alert('메롱');</script> 님");
+		MemberVO memberVO = memberService.readMember(user_id);
+		model.addAttribute("memberVO", memberVO);
+		//model.addAttribute("user_id2", user_id + "<script>alert('메롱');</script> 님");
 		return "admin/member/member_view";
 	}
 	
@@ -152,14 +180,18 @@ public class AdminController {
 		if(pageVO.getPage() == null) {//int일때 null이 에러가 나서 pageVO의 page 변수형Integer로 바꿈
 			pageVO.setPage(1);
 		}
-		pageVO.setPerPageNum(5);
+		pageVO.setPerPageNum(8);//리스트하단에 보이는 페이징번호의 갯수
 		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 회원수 10명으로 입력놓았습니다.
-		pageVO.setTotalCount(110);//전체회원의 수를 구한 변수값 매개변수로 입력하는 순간 calcPage()메서드 실행
+		//검색된 전체 회원 명수 구하기 서비스 호출
+		int countMember = 0;
+		countMember = memberService.countMember(pageVO);
+		pageVO.setTotalCount(countMember);//전체회원의 수를 구한 변수값 매개변수로 입력하는 순간 calcPage()메서드 실행
 
 		List<MemberVO> members_list = memberService.selectMember(pageVO);
 		model.addAttribute("members", members_list);//members 2차원배열을 _array 클래스오브젝트로 변경
-
-		model.addAttribute("pageVO", pageVO);
+		//상단의 @ModelAttribute("pageVO")는 jsp로 PageVO클래스 결과를 보내주는 역할
+		//만약에 위 @ModelAttribute를 사용한다면, 아래 문장이 없어도 됨.
+		//model.addAttribute("pageVO", pageVO);
 		//System.out.println("디버그 스타트페이지는: " +pageVO.getStartPage());
 		//System.out.println("디버그 엔드페이지는: " +pageVO.getEndPage());
 		return "admin/member/member_list";//member_list.jsp로 members변수명으로 데이터를 전송

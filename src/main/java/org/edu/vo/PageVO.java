@@ -48,10 +48,11 @@ public class PageVO {
 		//jsp에서 11을 클릭했을 떄 (20-10)+1=11스타트 페이지 값(위)
 		//(아래) 20 x 10 =200개의 레코드(회원[게시물])
 		//만약 회원[게시물]195개일 경우가 있음
-		if(tempEnd*this.perPageNum > this.totalCount) {//경우 200>195
+		if(tempEnd*this.queryPerPageNum > this.totalCount) {//경우 200>195
+			//(임시끝페이지x쿼리에서 1페이지당출력할 갯수 > 실제전체갯수)
 			//클릭한 page 번호로 계산된 게시물 수가 실제 게시물(totalCount)수보다 클떄
 			this.endPage = (int)Math.ceil(
-					this.totalCount/(double)this.perPageNum
+					this.totalCount/(double)this.queryPerPageNum
 					);// 195/10=>[20] 19.9 19.8 ... 19.5
 			//195/10=>20 잘못된 경우
 		} else {
@@ -63,7 +64,7 @@ public class PageVO {
 		//아래는 prev,next구하는 계산식
 		this.prev = (this.startPage !=1);//예, 스타트페이지11 결과값은 true
 		//시작페이지가 1보다 크면 무조건 이전페이지가 있다고 봄
-		this.next = (this.endPage*this.perPageNum < this.totalCount);
+		this.next = (this.endPage*this.queryPerPageNum < this.totalCount);
 		//20x10 < 195 결과는 false이기 때문에 jsp에서 > 표시가 안보이게 처리함
 		//예) < 11 12 13 14 15 16 17 18 19 20(tempEnd)  시작11 끝20
 	}
@@ -72,7 +73,7 @@ public class PageVO {
 		return perPageNum;
 	}
 	public void setPerPageNum(int perPageNum) {
-		perPageNum = 10;//강제로 1페이지당 보여줄 개수값을 10개로 지정
+		//perPageNum = 10;//강제로 1페이지당 보여줄 개수값을 10개로 지정
 		this.perPageNum = perPageNum;
 	}
 	public Integer getPage() {
