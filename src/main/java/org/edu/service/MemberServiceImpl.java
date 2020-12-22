@@ -46,5 +46,11 @@ public class MemberServiceImpl implements IF_MemberService {
 		memberDAO.updateMember(memberVO);
 		
 	}
+	@Override
+	public void insertMember(MemberVO memberVO) throws Exception {
+		// jsp폼에서 입력한 회원정보 등록하기
+		memberDAO.insertMember(memberVO);
+		
+	}
 
 }

@@ -3,6 +3,9 @@
 1. ID수정 방지기능
 2. enabled 값 jsp바인딩(true|False-enabled)처리 확인
 - 한글이 POST시 깨지는 문제: web.xml에서 한글처리 위한 UTF-8 필터 추가
+- 중복아이디체크(Ajax로 간단한 RestAPI컨트롤러 구성):
+- 중복아이디가 존재하지 않을 때만 SUBMIT버튼이 활성화시키는 Jquery를 사용합니다.
+- 중복 아이디 체크는 버튼을 사용하지 않고, 아이디 input 항목을 벗어났을 때 이벤트를 이용해서 Ajax를 호출할 예정.
 
 #### 20201221(월)
 - 로그4j에 레벨: debug < warn < info 오른쪽일수록 더 자세한 로그가 출력됨

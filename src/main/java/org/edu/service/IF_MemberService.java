@@ -17,4 +17,5 @@ public interface IF_MemberService {
 	public void deleteMember(String user_id) throws Exception; //반환값이 없는 이유는 삭제하면 받을 값이 없기때문에
 	//업데이트 후 member_view.jsp로 이동
 	public void updateMember(MemberVO memberVO) throws Exception;
+	public void insertMember(MemberVO memberVO) throws Exception;
 }
