@@ -9,19 +9,19 @@ import java.util.Date;
  */
 public class BoardVO {
 	//멤버변수 선언
-	private Integer bno;//int는 입력값이 null일떄 에러가 나기때문에 변경
+	private Integer bno;//int은 입력값이 null일때 에러나기  때문에, Interger로 변경
 	private String title;
 	private String content;
 	private String writer;
-	private Date regdate;
+	private Date reg_date;
 	private Date update_date;
 	private Integer view_count;
 	private Integer reply_count;
 	
 	@Override
 	public String toString() {
-		return "디버그 BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", update_date=" + update_date + ", view_count=" + view_count + ", reply_count="
+		return "디버그용 BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ reg_date + ", update_date=" + update_date + ", view_count=" + view_count + ", reply_count="
 				+ reply_count + "]";
 	}
 	public Integer getBno() {
@@ -48,11 +48,11 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getReg_date() {
+		return reg_date;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
 	public Date getUpdate_date() {
 		return update_date;
