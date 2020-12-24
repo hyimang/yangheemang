@@ -1,5 +1,14 @@
 #### 20201224(목)
+- 인터셉터(Interceptor-가로채기)클래스: 예외처리를 error.jsp로 공통에러페이지생성해서 바인딩 처리할때.
+- AOP작동 안됐던 문제점 2가지 처리
+- 1. Controller 클래스가 빈으로 등록되는 servlet-context.xml에도 aop태그 추가
+- 2. DebugAdivce 클래스의 logger.debug를 logger.info로 변경 또는 log4.xml 설정 debug로 변경
+- 웹의 3요소(웹표준성-HTML5, 웹접근성-장애인접근이 가능한 콘텐츠 제작, 웹호환성-크로스 브라우징
+- 스프링 시큐리티에서 사용하는 암호화는 단방향 암호화입니다.(복호화가 안되는 방식)
 
+- 관리자단 /resources 폴더루트: 관리자단은 디자인 변경이 없음
+- 사용자단/resources/home 폴더에 위치한 이유는 사용자단은 1년마다 리뉴얼함
+- 1년마다 /resources/home2020
 
 #### 20201223(수)
 - Mysql에서 Engine: InnoDB-최신버젼. 트랜잭션가능, MyISAM-트랜잭션불가능
