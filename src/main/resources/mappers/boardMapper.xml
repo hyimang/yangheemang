@@ -17,9 +17,27 @@
 	</if>
 </if>
 </sql>
-<select id="selectBoard">
+
+
+<select id="readAttach" resultType="string">
+select save_file_name from tbl_attach where bno = #{bno} order by reg_date desc
+</select>
+<select id="readBoard" resultType="org.edu.vo.BoardVO">
+select * from tbl_board where bno = #{bno}
+</select>
+<update id="updateViewCount">
+update tbl_board set view_count = view_count +1<!--조회수 1씩 누적 -->
+where bno = #{bno}
+</update>
+<select id="countBoard" resultType="int">
+select count(*) from tbl_board
+<include refid="sqlWhere"></include>
+</select>
+
+<select id="selectBoard" resultType="org.edu.vo.BoardVO">
 select * from tbl_board
 <include refid="sqlWhere"></include>
+order by reg_date desc
 limit #{queryStartNo}, #{queryPerPageNum}
 </select>
 

@@ -1,5 +1,16 @@
 #### 20201228(월)
-
+- 자료구조: List<BoardVO>, LIst<String>
+- List<BoardVO>: [
+	{bno1, 'title1', 'content1', ...}
+	{bno2, 'title2', 'content2', ...}
+	...
+- ]
+- List<String>:[
+	{'file_name1'},
+	{'file_name2'},
+	...
+- ]
+- 트랜젝션 @Transactional: root-context.xml datas
 
 #### 20201224(목)
 - 인터셉터(Interceptor-가로채기)클래스: 예외처리를 error.jsp로 공통에러페이지생성해서 바인딩 처리할때.
