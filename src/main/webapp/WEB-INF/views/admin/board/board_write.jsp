@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">글쓰기</h1>
+            <h1 class="m-0">게시글 등록</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">글쓰기</li>
+              <li class="breadcrumb-item active">게시글 등록</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -71,7 +71,7 @@
           
           <!-- 버튼영역 시작 -->
             <div class="card-body">
-            	<a href="admin/board/board_list" class="btn btn-primary float-right mr-1">LIST ALL</a>
+            	<a href="/admin/board/board_list" class="btn btn-primary float-right mr-1">LIST ALL</a>
               	<button type="submit" class="btn btn-danger float-right mr-1">SUBMIT</button>              	
               	<!-- a태그는 링크이동은 되지만, post값을 전송하지는 못합니다. 그래서, button태그를 사용. -->
             </div>
@@ -98,4 +98,16 @@
 $(document).ready(function () {
   bsCustomFileInput.init();
 });
+</script>
+<link rel="stylesheet" href="/resources/plugins/summernote/summernote.css">
+<script src="/resources/plugins/summernote/summernote.js" ></script>
+<script>
+$(document).ready (function(){
+		$('#content').summernote({
+			height:150,
+			lang:"ko-KR",
+			placeholder:'글 내용을 입력해주세요'
+		});	
+});//textarea 중 content아이디영역을 summernote에디터로 변경처리 함수실행
+
 </script>

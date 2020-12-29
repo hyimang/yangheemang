@@ -1,7 +1,13 @@
 #### 20201229(화)
 - 데이터흐름: 물리DB(필드명) - DAO - Service - Controller - JSP(input 택의 name속성))- BoardVO(멤버변수와 위 5군데 Get/Set이 가능하려면 이름이 동일해야함 필수조건!)가 중간에서 관여함
+- input type="file" name="file" 바로DB테이블에 저장할 수 없음.
+- save_file_name, real_file_name 이런 테이블 필드에 저장하기 전에 전처리 과정이 필요함
+- 첨부파일 등록 시 전처리 과정(아래 2가지)
+- 1. 서버에 저장공간(폴더)에 save_file_name이름으로 .jpg, .hwp, .xls 저장되는 기능필요
+- 2. 물리DB테이블에 save_file_name필드, real_file_name필드, bno 게시물번호 필드에 저장되는 기능 필요
 
-#### 20201228(월)
+
+#### 20201228(월))
 - 자료구조: List<BoardVO>, LIst<String>
 - List<BoardVO>: [
 	{bno1, 'title1', 'content1', ...}
