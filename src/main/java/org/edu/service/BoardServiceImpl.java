@@ -61,4 +61,12 @@ public class BoardServiceImpl implements IF_BoardService {
 		
 	}
 
+
+	@Override
+	public void updateBoard(BoardVO boardVO) throws Exception {
+		// 게시물 수정 DAO 연결
+		boardDAO.updateBoard(boardVO);
+		
+	}
+
 }

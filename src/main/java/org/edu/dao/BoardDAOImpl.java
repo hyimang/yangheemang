@@ -69,4 +69,12 @@ public class BoardDAOImpl implements IF_BoardDAO {
 		
 	}
 
+
+	@Override
+	public void updateBoard(BoardVO boardVO) throws Exception {
+		// 게시물 수정 매퍼쿼리 연결
+		sqlSession.update("boardMapper.updateBoard", boardVO);
+		
+	}
+
 }
