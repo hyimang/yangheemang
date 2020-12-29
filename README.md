@@ -1,3 +1,6 @@
+#### 20201229(화)
+- 데이터흐름: 물리DB(필드명) - DAO - Service - Controller - JSP(input 택의 name속성))- BoardVO(멤버변수와 위 5군데 Get/Set이 가능하려면 이름이 동일해야함 필수조건!)가 중간에서 관여함
+
 #### 20201228(월)
 - 자료구조: List<BoardVO>, LIst<String>
 - List<BoardVO>: [
