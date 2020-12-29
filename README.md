@@ -10,6 +10,9 @@
 - 첨부파일 등록 시 전처리 과정(아래 2가지)
 - 1. 서버에 저장공간(폴더)에 save_file_name이름으로 .jpg, .hwp, .xls 저장되는 기능필요
 - 2. 물리DB테이블에 save_file_name필드, real_file_name필드, bno 게시물번호 필드에 저장되는 기능 필요
+- DI(의존성 주입)컨테이너 영역 안에 스프링빈이 들어감(@Controller,@Service,@Repository,@Component@RestController등)
+- 도메인 (domain=VO, Value Object 멤버변수)
+- 도메인 주도 개발(DDD): 해당분야 전문가가 개발해야지만 제대로 개발
 
 
 #### 20201228(월)

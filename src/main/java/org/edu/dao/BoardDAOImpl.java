@@ -73,6 +73,11 @@ public class BoardDAOImpl implements IF_BoardDAO {
 	@Override
 	public void updateBoard(BoardVO boardVO) throws Exception {
 		// 게시물 수정 매퍼쿼리 연결
+		// 위쪽의 매서드인 updateBoard매서드의 매개변수 해석(아래) BoardVO클래스는 개발자가 생성한 참조형 데이터 타입
+		// jsp에서 updateBoard태그에서 전송된 값  boardVO클래스에 담겨서 데이터를 받습니다.
+		// 함수는 오브젝트 생성해야지만 사용 가능함. 자바에선 new, 스프링에선 Inject.
+		// BoardVO는 개발자가 선언한 클래스, 데이터클래스, 오브젝트 클래스 /자료형
+		// String 자바가 선언한 클래스 /자료형
 		sqlSession.update("boardMapper.updateBoard", boardVO);
 		
 	}
