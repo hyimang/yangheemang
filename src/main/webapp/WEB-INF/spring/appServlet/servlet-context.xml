@@ -23,7 +23,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- @Controller를 여기서 bean으로 등록 -->
 	<context:component-scan base-package="org.edu.controller" />
 	<context:component-scan base-package="org.edu.util" />
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
@@ -37,7 +36,7 @@
 	
 	<!-- 업로드한 파일이 저장되는 위치: 로컬PC용 --> 
 	<beans:bean id="uploadPath" class="java.lang.String">
-	    <beans:constructor-arg value="C:\\egov\\workspace\\upload" />
+	    <beans:constructor-arg value="E:\\egov\\workspace\\upload" />
 	</beans:bean>
 	
 	

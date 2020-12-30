@@ -38,36 +38,35 @@
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> title</strong>
                 <p class="text-muted">
-                <!-- 아래와 같은 출력형태는 EL(Express Language)표시라고 함 -->
-                <%--${boardVO.title} --%><!-- 자바의 EL출력은 보안에 취약하기 때문에 아래로 처리 -->
+                <!-- 아래와 같은 출력형태는 EL(Express Language)표시라고 합니다 -->
+                <%-- ${boardVO.title} --%>
+                <!-- 위 자바의 EL출력은 보안에 취약하기 때문에 아래처럼 처리함. -->
                 <c:out value="${boardVO.title}"></c:out>
                 </p>
 
                 <hr><!-- horizontal 수평선 태그 -->
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> content</strong>
                 <p class="text-muted">
-                	${boardVO.content}<!-- c:out으로 안하는 이유: <br>같은 태그가 작동안함 -->
+                	${boardVO.content}
                 </p>
 				<!-- 부트스트랩 오른쪽여백주기클래스명mr-1:(margin-right: .25rem!important;) -->
                 <hr>
                 <strong><i class="fas fa-pencil-alt mr-1"></i> 작성자</strong>
                 <p class="text-muted">
-                	<c:out value="${boardVO.writer}"></c:out>
+                <c:out value="${boardVO.writer}"></c:out>
                 </p>
                 <c:if test="${boardVO.save_file_names[0] != null}">
-	                <hr>
+                	<hr>
 	                <strong><i class="far fa-save mr-1"></i> 첨부파일</strong>
 	                <p class="text-muted">
 	                <a href="#">
 	                ${boardVO.save_file_names[0]}-파일다운로드
-	               </a>
-	               </p>
+	                </a>
+	                </p>
                 </c:if>
-                                
               </div>
               <!-- /.card-body -->
             </div>
-          
           
           <!-- 버튼영역 시작 -->
           <div class="card-body">
@@ -107,11 +106,11 @@
 	          </div>
 	          </form>
 	          <div class="timeline">
-	          		<!-- .time label의 before위치 -->
+	          	  <!-- .time-label의 before 위치 -->
 		          <div class="time-label">
 	                <span class="bg-red">Reply List[1]&nbsp;&nbsp;</span>
 	              </div>
-		          <!-- .time label after 위치 -->
+	              <!-- .time-label의 after 위치 -->
 		          <!-- <div>
 	                <i class="fas fa-envelope bg-blue"></i>
 	                <div class="timeline-item">
@@ -168,13 +167,12 @@ jstl을 사용하려면, jsp에서 <%@ taglib uri=... 처럼 외부 core를 가�
 <%-- jsp <c:forEach items="${members}" var="member"> 같은 역할 {{#each .}} --%>
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
-<div class="template-div" date-rno="{{rno}}">
+<div class="template-div" data-rno="{{rno}}">
  <i class="fas fa-envelope bg-blue"></i>
  <div class="timeline-item">
    <h3 class="timeline-header">{{replyer}}</h3>
    <div class="timeline-body">{{replytext}}</div>
    <div class="timeline-footer">
-     <!-- Button trigger modal -->
 	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
   		수정
 	 </button>
@@ -187,10 +185,10 @@ jstl을 사용하려면, jsp에서 <%@ taglib uri=... 처럼 외부 core를 가�
 <!-- 화면을 재구현Representation하는 함수(아래) -->
 <script>
 var printReplyList = function(data, target, templateObject) {
-	var template = Handlebars.compile(templateObject.html());//위에 each를 html 태그로 변환
-	var html = template(data);//빅데이터를 리스트템플릿에 바인딩(결합)시켜주는 역할. 변수 html에 저장되었음
+	var template = Handlebars.compile(templateObject.html());//html태그로 변환
+	var html = template(data);//빅데이터를 리스트템플릿에 바인딩 결합시켜주는 역할. 변수html에 저장되었음.
 	$(".template-div").remove();//화면에 보이는 댓글리스트만 지우기.
-	target.after(html);//targetdms . time-label 클래스 영역을 가리킴.
+	target.after(html);//target은 .time-label 클래스영역을 가리킵니다.
 };
 </script>
 <!-- 댓글 등록 버튼 액션 처리(아래) -->
@@ -210,7 +208,7 @@ $(document).ready(function() {
 				result = [
 					//{rno:댓글번호,bno:게시물번호,replytext:"첫번째 댓글",replyer:"admin",regdate:타임스탬프}
 					{rno:1,bno:15,replytext:"첫번째 댓글",replyer:"admin",regdate:1601234512345},//첫번째 댓글 데이터
-					{rno:2,bnt:15,replytext:"두번째 댓글",replyer:"user02",regdate:1601234512345}//두번째 댓글 데이터
+					{rno:2,bnt:15,replytext:"두번째 댓글",replyer:"admin",regdate:1601234512345}//두번째 댓글 데이터
 				];//위 URL이 공공데이터생각하면,위 데이터를 화면에 구현하면, 빅데이터의 시각화로 불리게 됩니다.
 				//printReplyList(빅데이터, 출력할 타켓위치, 빅데이터를 가지고 바인딩된-묶인 템플릿화면);
 				printReplyList(result, $(".time-label"), $("#template"));//화면에 출력하는 구현함수를 호출하면 실행.
@@ -219,16 +217,17 @@ $(document).ready(function() {
 	} );
 });
 </script>
-<!-- 댓글리스트에서 수정버튼을 클릭했을 떄 팝업창이 드는데 팝업창 내용을 동적으로 변경시켜주는 구현 -->
+<!-- 댓글리스트에서 수정 버튼을 클릭했을때, 팝업창이 뜨는데, 그 팝업창에 내용을 동적으로 변경시켜주는 구현(아래)  -->
 <script>
-$(document).ready(function(){
-	$(".timeline").on("click", ".template-div", function(){//.template-div 댓글리스트영역
-		//$(this);클릭한 댓글에 따라서 this는 첫번째 댓들일수도 있고, 두번쨰 댓글일수도 있음
+$(document).ready(function() {
+	$(".timeline").on("click", ".template-div", function() {//.template-div 댓글 리스트영역
+		//$(this);클릭한 댓글에 따라서 this는 첫번째 댓글일 수 도 있고, 두번째 댓글일 수도 있습니다.
 		$("#rno").val($(this).attr("data-rno"));
 		$(".modal-title").html($(this).find(".timeline-header").text());
 		$("#replytext").val($(this).find(".timeline-body").text());
-		//alert("디버그"+ $(this).find(".timeline-body").text());
-		//마우스클릭으로 선택한 댓글의 .timeline-body영역의 text문자를 모달창에 #replytext영역에 값으로 입력
+		//alert("디버그" + $(this).find(".timeline-body").text());
+		//마우스클릭으로 선택한 댓글의 .timeline-body영역의 text문자를 
+		//모달창의 #replaytext영역에 값으로 입력하겠다.
 	});
 });
 </script>
@@ -237,7 +236,7 @@ $(document).ready(function(){
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">작성자</h5><!-- 동적으로 바뀌는 값 위에 클릭액션때문에 -->
+        <h5 class="modal-title" id="exampleModalLabel">작성자</h5><!-- 작성자는 동적으로 값이 바뀝니다. -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -263,10 +262,10 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#btn_board_delete").on("click",function(){
 		//alert("디버그");
-		if(confirm("정말로 삭제하시겠습니까?")) {
-		$('form[name="action_form"]').attr("method","post");
-		$('form[name="action_form"]').attr("action","/admin/board/board_delete");
-		$('form[name="action_form"]').submit();
+		if(confirm("정말로 삭제 하시겠습니까?")) {
+			$('form[name="action_form"]').attr("method","post");
+			$('form[name="action_form"]').attr("action","/admin/board/board_delete");
+			$('form[name="action_form"]').submit();
 		}
 	});
 });

@@ -15,6 +15,7 @@ import org.edu.util.SecurityCode;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,72 +28,65 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 //스프링에서 사용가능한 클래스를 빈(커피Bean)이라고 하고, @Contorller 클래스를 사용하면 됨.
 @Controller
 public class AdminController {
-	private Object object;
-
 	//@Inject == @Autowired 의존성 주입방식 DI(Dependency Inject)으로 
 	//외부 라이브러리 = 컴포넌트 = 모듈  = 실행클래스 = 인스턴스 갖다쓰기(아래)
 	@Inject
-	CommonController commomnController;
+	CommonController commonController;
 	
 	@Inject
 	SecurityCode securityCode;
 	
-	@Inject//게시판인터페이스를 주입받아서 boardService 오브젝트 생성
-	IF_BoardService boardService;
+	@Inject
+	IF_BoardService boardService;//게시판인터페이스를 주입받아서 boardService오브젝트 생성.
 	
 	@Inject
 	IF_MemberService memberService;//멤버인터페이스를 주입받아서 memberService오브젝트 변수를 생성.
-
-	private CommonController commonController;
 	
-	
-	//GET은 URL전송방식(아무데서나 브라우저 주소에 적으면 실행됨), POST는 폼 전송방식(해당페이지에서만 작동가능)	
+	//GET은 URL전송방식(아무데서나 브라우저주소에 적으면 실행됨), POST는 폼전송방식(해당페이지에서만 작동가능)
 	@RequestMapping(value="/admin/board/board_delete",method=RequestMethod.POST)
 	public String board_delete(RedirectAttributes rdat,PageVO pageVO, @RequestParam("bno") Integer bno) throws Exception {
-		//첨부파일 삭제 미처리3 -추가예정:삭제할때 자식부터 삭제 후 부모가 삭제됨
+		//첨부파일 삭제 미처리3 -추가예정:삭제할때 순서, 자식부터 삭제 후 부모가 삭제됩니다.
 		boardService.deleteBoard(bno);
 		rdat.addFlashAttribute("msg", "삭제");
-		return "redirect:/admin/board/board_list?page=" + pageVO.getPage();//삭제할 당시의 현재페이지를 가져가서 리스트로 보여줌
-	}
-	@RequestMapping(value="/admin/board/board_update",method=RequestMethod.POST)
-	public String board_update(RedirectAttributes rdat, MultipartFile file, BoardVO boardVO, PageVO pageVO) throws Exception{
-		boardService.updateBoard(boardVO);
-		//첨부파일 수정 미처리2 추가예정:수정할때 순서, 부모부터 수정 후 자식이 수정됩니다.		
-		rdat.addFlashAttribute("msg", "수정");
-		return "redirect:/admin/board/board_view?page="+pageVO.getPage()+"&bno="+boardVO.getBno();
+		return "redirect:/admin/board/board_list?page=" + pageVO.getPage();//삭제할 당시의 현재페이지를 가져가서 리스트로보줌
 	}
 	
 	@RequestMapping(value="/admin/board/board_update",method=RequestMethod.GET)
-	public String board_update(@RequestParam("bno") Integer bno, @ModelAttribute("pageVO") PageVO pageVO, Model model) throws Exception {
+	public String board_update(@RequestParam("bno") Integer bno,@ModelAttribute("pageVO") PageVO pageVO,Model model) throws Exception {
 		BoardVO boardVO = boardService.readBoard(bno);
 		model.addAttribute("boardVO", boardVO);
 		return "admin/board/board_update";//파일경로
 	}
-	
+	@RequestMapping(value="/admin/board/board_update",method=RequestMethod.POST)
+	public String board_update(RedirectAttributes rdat,MultipartFile file, BoardVO boardVO, PageVO pageVO) throws Exception {
+		boardService.updateBoard(boardVO);
+		//첨부파일 수정 미처리2 - 추가예정:수정할때 순서, 부모부터 수정 후 자식이 수정됩니다.
+		rdat.addFlashAttribute("msg", "수정");
+		return "redirect:/admin/board/board_view?page="+pageVO.getPage()+"&bno="+boardVO.getBno();
+	}
 	
 	@RequestMapping(value="/admin/board/board_write",method=RequestMethod.GET)//URL경로
 	public String board_write() throws Exception {
 		return "admin/board/board_write";//파일경로
 	}
 	@RequestMapping(value="/admin/board/board_write",method=RequestMethod.POST)
-	public String board_write(RedirectAttributes rdat, MultipartFile file, BoardVO boardVO) throws Exception {
+	public String board_write(RedirectAttributes rdat,MultipartFile file, BoardVO boardVO) throws Exception {
 		//post받은 boardVO내용을 DB서비스에 입력하면 됩니다.
 		//dB에 입력후 새로고침명령으로 게시물 테러를 당하지 않으려면, redirect로 이동처리 합니다.(아래)
-		//첨부파일이 있으면 게시판DB만 저장, 그렇지 않으면 첨부파일 업로드처리 후 게시판 저장+첨부파일DB저장
+		//첨부파일이 있으면, 첨부파일 업로드처리 후 게시판DB저장+첨부파일DB저장
 		if(file.getOriginalFilename() != "") {//첨부파일명이 있으면
-			String[] save_file_names = commonController.fileUpload(file);//폴더에 업로드 저장완료
+			String[] save_file_names = commonController.fileUpload(file);//폴더에 업로드저장완료
 			boardVO.setSave_file_names(save_file_names);//UUID로 생성된 유니크한 파일명
 			String[] real_file_names = new String[] {file.getOriginalFilename()};//"한글파일명.jpg"
-			boardVO.setSave_file_names(real_file_names);
+			boardVO.setReal_file_names(real_file_names);
 		}
 		boardService.insertBoard(boardVO);
-		
 		
 		rdat.addFlashAttribute("msg", "저장");
 		return "redirect:/admin/board/board_list";
 	}
 	@RequestMapping(value="/admin/board/board_view", method=RequestMethod.GET)
-	public String board_view(@ModelAttribute("pageVO")PageVO pageVO, @RequestParam("bno") Integer bno, Model model) throws Exception {
+	public String board_view(@ModelAttribute("pageVO") PageVO pageVO, @RequestParam("bno") Integer bno, Model model) throws Exception {
 		//jsp로 보낼 더미 데이터 boardVO에 담아서 보낸다.
 		//실제로는 아래처럼 더미데이터를 만드것이 아닌
 		//쿼리스트링(질의문자열)로 받아온 bno(게시물 고유번호)를 이용해서 DB에서
@@ -108,23 +102,28 @@ public class AdminController {
 		 * boardVO.setReply_count(0);
 		 */
 		BoardVO boardVO = boardService.readBoard(bno);
-		//시큐어 코딩 시작
+		//시큐어코딩 시작
 		String xss_data = boardVO.getContent();
 		boardVO.setContent(securityCode.unscript(xss_data));
-		//시큐어 코딩 끝
+		//시큐어코딩 끝
 		//첨부파일 리스트 값을 가져와서 세로데이터(jsp에서는 forEach문사용)를 가로데이터(jsp에서 배열사용)로 바꾸기
-		//첨부파일 1개만 올리기 때문에 리스트형 데이터를 일반 배열 데이터로 변경
-		List<String> files = boardService.raadAttach(bno);
+		//첨부파일을 1개만 올리기 때문에 리스트형 데이터를 배열데이터로 변경
+		// 리스트형 입력값(세로) [
+		// {'save_file_name0'},
+		// {'save_file_name1'},
+		// ..
+		//]
+		List<String> files = boardService.readAttach(bno);
 		String[] save_file_names = new String[files.size()];
 		int cnt = 0;
 		for(String save_file_name:files) {//세로데이터를 가로데이터로 변경하는 로직
 			save_file_names[cnt] = save_file_name;
 			cnt = cnt + 1;
 		}
-		//배열형 출력값(가로){'save_file_name0', 'save_file_name1',...}
+		//배열형출력값(가로) {'save_file_name0','save_file_name1',...}
 		boardVO.setSave_file_names(save_file_names);
-		//위처럼 첨부파일 세로배치를 가로배치로 변경하고, get/set 하는 이유는 attachVO만들지 않아서 입니다.
-		//만약 위처럼 복잡하게 세로 가로 배치를 바꾸는 게 이상하면 아래처럼 처리 가능
+		//위처럼 첨부파일을 세로베치->가로배치로 바꾸고, get/set하는 이유는 attachVO를 만들지 않아서 입니다.
+		//만약 위처럼 복잡하게 세로배치->가로배치로 바꾸는 것이 이상하면, 아래처럼처리
 		//model.addAttribute("save_file_names", files);
 		model.addAttribute("boardVO", boardVO);
 		return "admin/board/board_view";
@@ -150,22 +149,22 @@ public class AdminController {
 		 * = {2,"두번째 게시물 입니다.","두번째 내용 입니다.<br>줄바꿈했습니다.","user02",now(),2,0};
 		 * board_array[1] = input_board2; //-------------------------------------
 		 * List<BoardVO> board_list = Arrays.asList(board_array);//배열타입을 List타입으로 변경절차.
-		 */		
-		// selectBoard 마이바티스쿼리를 실행하기전에 set이 발생해야 변수값이 할당됩니다.(아래)
-		// PageVO의 queryStartNo 구하는 계산식 먼저 실행되어서 변수값이 발생되어야함.
+		 */
+		// selectBoard마이바티스쿼리를 실행하기전에 set이 발생해야 변수값이 할당됩니다.(아래)
+		// PageVO의 queryStartNo구하는 계산식 먼저 실행되어서 변수값이 발생되어야 합니다.
 		if(pageVO.getPage() == null) {//int 일때 null체크에러가 나와서 pageVO의 page변수형 Integer로벼경.
 			pageVO.setPage(1);
 		}
 		pageVO.setPerPageNum(8);//리스트하단에 보이는 페이징번호의 개수
 		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 게시물수 10개로 입력 놓았습니다.
-		//검색된 전체 게시물 수 구하기 서비스 호출
+		//검색된 전체 게시물수 구하기 서비스 호출
 		int countBoard = 0;
 		countBoard = boardService.countBoard(pageVO);
-		pageVO.setTotalCount(countBoard);//115전체 게시물 수를 구한 변수 값 매개변수로 입력하는 순간 calcPage()메서드실행.
+		pageVO.setTotalCount(countBoard);//11x개 전체 게시물 수를 구한 변수 값 매개변수로 입력하는 순간 calcPage()메서드실행.
 		
 		List<BoardVO> board_list = boardService.selectBoard(pageVO);
 		model.addAttribute("board_list", board_list);
-		//model.addAttribute("pageVO", pageVO);//@ModelAttribute 애노테이션 대체
+		//model.addAttribute("pageVO", pageVO);//@ModelAttribute 애노테이션으로 대체
 		return "admin/board/board_list";
 	}
 	

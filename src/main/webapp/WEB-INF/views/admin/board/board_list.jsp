@@ -27,9 +27,9 @@
     <!-- 본문내용 Main content -->
     <section class="content">
       <div class="container-fluid">
-      
-      <div class="row"><!-- 부트스트랩의 디자인 클래스 row -->
-          <div class="col-12"><!-- 그리드시스템 중 12가로칼럼 중 12=100% -->
+        
+        <div class="row"><!-- 부트스트랩의 디자인 클래스 row -->
+          <div class="col-12"><!-- 그리드시스템중 12가로칼럼 width:100% -->
             <div class="card"><!-- 부트스트랩의 카드 클래스:네모난 디자인 -->
               <div class="card-header">
                 <h3 class="card-title">게시물 검색</h3>
@@ -38,14 +38,14 @@
                   
                   <form name="search_form" action="/admin/board/board_list" method="get">
                   <div class="input-group input-group-sm">
-                  <!-- 부트스트랩 템플릿만으로는 디자인처리 부족한 경우가 있기 때문에 위와 같은 인라인 스타일 사용 -->
-                   <div>
-                       <select name="search_type" class="form-control">
-                           <option value="all" selected>-전체-</option>
-                           <option value="title" data-select2-id="8">제목</option>
-                           <option value="content" data-select2-id="17">내용</option>
-                       </select>
-                   </div>
+                    <!-- 부트스트랩 템플릿만으로는 디자인처리가 부족한 경우가 있기 때문에 종종 인라인 스타일 사용 -->
+                    <div>
+                        <select name="search_type" class="form-control">
+                            <option value="all" selected>-전체-</option>
+                            <option value="title" data-select2-id="8">제목</option>
+                            <option value="content" data-select2-id="16">내용</option>
+                        </select>
+                    </div>
                     <div>
                     <input type="text" name="search_keyword" class="form-control float-right" placeholder="Search">
 					</div>
@@ -64,7 +64,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>bno</th><!-- 테이블 헤드 타이틀태그 th -->
+                      <th>bno</th><!-- 테이블 헤드 타이틀태그th -->
                       <th>title[reply_count]</th>
                       <th>writer</th>
                       <th>reg_date</th>
@@ -72,40 +72,47 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <!-- jstl core를 갖다스느 이유는 향상된 for반복문을 사용하기 위해서 지정함 -->
-                  <!-- jstl core를 prefix로 지정한 것을 갖다 쓰는것 -->
+                  <!-- jstl core를 갖다쓰는 이유는 향상된 for반복문을 사용하기 위해서 지정(아래) -->
                   <c:forEach items="${board_list}" var="boardVO">
-                  <tr>
+                  	<tr>
                       <td>${boardVO.bno}</td>
-                      <!-- 아래 a링크값은 리스트가 늘어날 수록 동적으로 bno값이 변하게 됩니다. jsp로 처리 -->
+                      <!-- 아래 a링크값은 리스트가 늘어날 수록 동적으로 bno값이 변하게 됩니다. 개발자가 jsp처리 -->
                       <td><a href="/admin/board/board_view?page=${pageVO.page}&bno=${boardVO.bno}">
-                      <!-- c:out 사용하는 이유, 메롱을 방지하기 위한 시큐어코딩처리 -->
+                      <!-- c:out 사용하는 이유는 메롱을 방지하기 위해서 시큐어코딩처리 -->
                       <c:out value="${boardVO.title}"></c:out>[<c:out value="${boardVO.reply_count}"></c:out>]
                       </a></td>
                       <td><c:out value="${boardVO.writer}"></c:out></td>
-                      <td><fmt:formatDate pattern="yyyy-mm-dd HH:mm" value="${boardVO.reg_date}"/></td>
+                      <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.reg_date}"/></td>
                       <td><span class="badge bg-danger">${boardVO.view_count}</span></td>
-                      <!-- 권한표시는 부트스트랩 뱃지 클래스 사용 -->
+                      <!-- 권한표시는 부트스트랩 뺏지 클래스 사용 -->
                     </tr>
                   </c:forEach>
-                                        
+                    
                   </tbody>
                 </table>
               </div>
-              </div>
               <!-- /.card-body -->
-    
+            
+            </div>
             <!-- /.card -->
             
             <!-- 버튼영역 시작 -->
-              <div class="card-body text-center">
-              <a href="/admin/board/board_write" class="btn btn-primary float-right">CREATE</a>
-              <!-- 부트스트랩 디자인 버튼 클래스를 이용해서 a태그를 버튼 모양 만들기 -->
-              <!-- btn클래스명이 버튼모양을 만들고, btn-primary클래스명은 버튼 색상을 변경한느 역할 -->
-				</div>
-              <!-- 버튼 영역 끝 -->
-			  <!-- 페이징 처리 시작 -->
-            	<div class="pagination justify-content-center">
+              <div class="card-body">
+              	<a href="/admin/board/board_write" class="btn btn-primary float-right">CREATE</a>
+              	<!-- 부트스트랩 디자인 버튼클래스를 이용해서 a태그를 버튼모양 만들기(위) -->
+              	<!-- btn클래스명이 버튼모양으로 변경, btn-primary클래스명은 버튼색상을 변경하는역할 -->
+              	<!-- 
+              	어떻게 스타일이 아닌 클래스에다가 넣어줌으로서 모양과 위치과 바뀌는건가요?
+              	... 생각하는 부트스트랩은 html과 css를 모아놓은 집합체라고 생각하는데 
+              	거기에 float-right클라스로 정해놓은곳에 오른쪽으로 가게하는 스타일이 지정되어있어서 = 부트스트랩
+              	클래스 이름만 지정해줘도 그 클래스로 지정된 스타일이 적용되어서 
+              	클래스 이름 지정만으로도 스타일이 적용된다고 보면...          	
+              	 -->
+              </div>
+            <!-- 버튼영역 끝 -->
+              
+            <!-- 페이징처리 시작 -->
+            <div class="pagination justify-content-center">
             	<ul class="pagination">
             	 <c:if test="${pageVO.prev}">
 	            	 <li class="paginate_button page-item previous" id="example2_previous">
@@ -128,10 +135,11 @@
             	 </c:if>
             	 </ul>
             </div>
-              	<!-- 페이징 처리 끝 -->
+	  		<!-- 페이징처리 끝 -->
+            
           </div>
         </div>
-      
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

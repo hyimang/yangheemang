@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">게시글 등록</h1>
+            <h1 class="m-0">게시글등록</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">게시글 등록</li>
+              <li class="breadcrumb-item active">게시글등록</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,7 +32,7 @@
           <div class="col-12"><!-- 그리드시스템중 12가로칼럼 width:100% -->
           
           <!-- form start -->
-          <form name="write_form" action="/admin/board/board_write" method="post" encType="multipart/form=data">
+          <form name="write_form" action="/admin/board/board_write" method="post" encType="multipart/form-data">
           
           <div class="card card-primary">
               <div class="card-header">
@@ -47,14 +47,14 @@
                     <!-- 폼에서 input같은 입력태그에는 name속성이 반드시 필요, 이유는 DB에 입력할때,
                     	 값을 전송하게 되는데, 전송값을 담아두는 이름이 name가 되고, 위에서는 user_id 입니다. -->
                   </div>
-                    <div class="form-group">
+                  <div class="form-group">
                   	<label for="content">Content</label>
                   	<textarea rows="5" name="content" id="content" class="form-control"></textarea>
                   	<!-- 필수입력 값은 html5에서 지원하는 유효성 검사중 required 속성을 사용해서 빈(null)값체크(유효성검사)를 합니다. -->
                   </div>
                   <div class="form-group">
                   	<label for="writer">writer</label>
-                  	<input type="text" class="form-control" name="writer" id="writer" placeholder="작성자를 입력해주세요" required>
+                  	<input type="text" class="form-control" name="writer" id="writer" placeholder="작성자를 입력해 주세요" required>
                   </div>
                   <div class="form-group" style="margin-bottom:0px;">
                   <label>attach</label>
@@ -63,7 +63,6 @@
                     <input type="file" name="file" class="custom-file-input" id="customFile">
                     <label class="custom-file-label" for="customFile" style="color:#999;">파일첨부</label>
                   </div>
-                  
                 </div>
                 <!-- /.card-body -->
               
@@ -100,30 +99,29 @@ $(document).ready(function () {
 });
 </script>
 <link rel="stylesheet" href="/resources/plugins/summernote/summernote.css">
-<<style>
+<style>
 .note-editor.note-frame.fullscreen{background:white;}
 </style>
-<script src="/resources/plugins/summernote/summernote.js" ></script>
+<script src="/resources/plugins/summernote/summernote.js"></script>
 <script>
-$(document).ready (function(){
-		$('#content').summernote({
-			height:150,
-			lang:"ko-KR",
-			placeholder:'글 내용을 입력해주세요',
-			toolbar: [
-					    ['fontname', ['fontname']],
-					    ['fontsize', ['fontsize']],
-					    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-					    ['color', ['forecolor','color']],
-					    ['table', ['table']],
-					    ['para', ['ul', 'ol', 'paragraph']],
-					    ['height', ['height']],
-					    ['insert',['link','video']],//'picture',
-					    ['view', ['fullscreen', 'help']]
-					  ],
-					fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
-					fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-		});	
-});//textarea 중 content아이디영역을 summernote에디터로 변경처리 함수실행
-
+$(document).ready(function(){
+	$('#content').summernote({
+		height:150,
+		lang:"ko-KR",
+		placeholder:'글 내용을 입력해 주세요',
+		toolbar: [
+				    ['fontname', ['fontname']],
+				    ['fontsize', ['fontsize']],
+				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+				    ['color', ['forecolor','color']],
+				    ['table', ['table']],
+				    ['para', ['ul', 'ol', 'paragraph']],
+				    ['height', ['height']],
+				    ['insert',['link','video']],//'picture',
+				    ['view', ['fullscreen', 'help']]
+				],
+		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+	});
+});//textarea 중 content아이디영역을 섬머노트에디터로 변경처리 함수실행
 </script>

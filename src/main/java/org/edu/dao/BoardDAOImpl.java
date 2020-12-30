@@ -87,11 +87,11 @@ public class BoardDAOImpl implements IF_BoardDAO {
 
 	@Override
 	public void insertAttach(String save_file_name, String real_file_name) throws Exception {
-		// 첨부파일 입력 매퍼쿼리 연결
-		Map<String,Object> paramMap = new HashMap<String, Object>();
+		// 첨부파일 입력 매퍼쿼리 연결(아래)
+		Map<String,Object> paramMap = new HashMap<String,Object>();
 		paramMap.put("save_file_name", save_file_name);
 		paramMap.put("real_file_name", real_file_name);
-		sqlSession.insert("boardMapper.inserAttach", paramMap);
+		sqlSession.insert("boardMapper.insertAttach", paramMap);
 		
 	}
 
