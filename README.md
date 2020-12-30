@@ -2,6 +2,16 @@
 - netstat -ano | findstr 8080 : 특정 포트로 검색
 - taskkill /F /PID 출력된 숫자 : PID를 통해 작동중인 프로그램 종료
 
+#### 20201230(수)
+- 스프링의 설정방식: 아래 2가지
+- 1. xml방식(메이븐빌드): 태그로 구성. 이클립스기반 스프링 웹프로젝트 개발시.(메인)
+- 2. Groovy방식(그래들빌드): 스크립트 구성. 안드로이드 스튜디오기반 앱개발시.(2주)
+- IoC: Inversion Of Control(제어의 역전) 프로그램제어를 개발자가 하지 않고, 스프링이 대신 처리 합니다.
+- IoC예: @Inject BoardService boardService; 개발자가 오브젝트를 생성 후 소멸(boardService.close())할 필요가 없습니다. 스프링이 소멸에 대한 제어를 대신 해 줍니다.
+- mvn compile(이클립스에서 run AS에서 maven build에서 compile run 과 동일
+- ~.java -> ~.class 로 컴파일된 결과파일이 생성됩니다.
+
+
 #### 20201229(화)
 - 데이터흐름: 물리DB(필드명) - DAO - Service - Controller - JSP(input 택의 name속성))
 - BoardVO(멤버변수와 위 5군데 Get/Set이 가능하려면 이름이 동일해야함 필수조건!)가 중간에서 관여함
@@ -13,7 +23,6 @@
 - DI(의존성 주입)컨테이너 영역 안에 스프링빈이 들어감(@Controller,@Service,@Repository,@Component@RestController등)
 - 도메인 (domain=VO, Value Object 멤버변수)
 - 도메인 주도 개발(DDD): 해당분야 전문가가 개발해야지만 제대로 개발
-
 
 #### 20201228(월)
 - 자료구조: List<BoardVO>, LIst<String>

@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
+import org.edu.util.CommonController;
 import org.edu.util.SecurityCode;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
@@ -26,8 +27,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 //스프링에서 사용가능한 클래스를 빈(커피Bean)이라고 하고, @Contorller 클래스를 사용하면 됨.
 @Controller
 public class AdminController {
+	private Object object;
+
 	//@Inject == @Autowired 의존성 주입방식 DI(Dependency Inject)으로 
 	//외부 라이브러리 = 컴포넌트 = 모듈  = 실행클래스 = 인스턴스 갖다쓰기(아래)
+	@Inject
+	CommonController commomnController;
+	
 	@Inject
 	SecurityCode securityCode;
 	
@@ -36,6 +42,8 @@ public class AdminController {
 	
 	@Inject
 	IF_MemberService memberService;//멤버인터페이스를 주입받아서 memberService오브젝트 변수를 생성.
+
+	private CommonController commonController;
 	
 	
 	//GET은 URL전송방식(아무데서나 브라우저 주소에 적으면 실행됨), POST는 폼 전송방식(해당페이지에서만 작동가능)	
@@ -70,8 +78,16 @@ public class AdminController {
 	public String board_write(RedirectAttributes rdat, MultipartFile file, BoardVO boardVO) throws Exception {
 		//post받은 boardVO내용을 DB서비스에 입력하면 됩니다.
 		//dB에 입력후 새로고침명령으로 게시물 테러를 당하지 않으려면, redirect로 이동처리 합니다.(아래)
+		//첨부파일이 있으면 게시판DB만 저장, 그렇지 않으면 첨부파일 업로드처리 후 게시판 저장+첨부파일DB저장
+		if(file.getOriginalFilename() != "") {//첨부파일명이 있으면
+			String[] save_file_names = commonController.fileUpload(file);//폴더에 업로드 저장완료
+			boardVO.setSave_file_names(save_file_names);//UUID로 생성된 유니크한 파일명
+			String[] real_file_names = new String[] {file.getOriginalFilename()};//"한글파일명.jpg"
+			boardVO.setSave_file_names(real_file_names);
+		}
 		boardService.insertBoard(boardVO);
-		//첨부파일 등록 미처리1 -추가예정:등록순서, 부모부터 등록 후 자식이 생성됨
+		
+		
 		rdat.addFlashAttribute("msg", "저장");
 		return "redirect:/admin/board/board_list";
 	}
