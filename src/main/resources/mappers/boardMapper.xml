@@ -17,12 +17,19 @@
 	</if>
 </if>
 </sql>
+<!-- 해당 게시물의 첨부파일 업데이트 시키기 
+첨부파일은 update 기능인데, 태그는 insert를 사용한 이유, PK가 save_file_name UUID이름인데 수정할 수 없음
+예) 주민번호(PK)를 수정한다고 하는 것과 같은 얘기로 허용이 안 됨. 그래서 update말고 insert태그 사용-->
+<insert id="updateAttach">
+insert into tbl_attach (save_file_name,real_file_name,bno)
+values (#{save_file_name}, #{real_file_name}, #{bno})
+</insert>
 <!-- 해당 게시물의 첨부파일 1개만 지우기 PK=기본키-->
 <delete id="deleteAttach">
 delete from tbl_attach where save_file_name = #{save_file_name}
 </delete>
-<!-- 해당 게시물의 첨부파일 모두 지우기 /Foreign key=외래키 사용 -->
-<delete id="deleteAttachALl">
+<!-- 해당 게시물의 첨부파일 모두 지우기 /Foreign key=참조/외래키 사용 -->
+<delete id="deleteAttachAll">
 delete from tbl_attach where bno = #{bno}
 </delete>
 <!-- LAST_INSERT_ID() 마리아DB에서 작동X -->
