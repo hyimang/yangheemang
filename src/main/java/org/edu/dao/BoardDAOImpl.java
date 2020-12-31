@@ -43,8 +43,8 @@ public class BoardDAOImpl implements IF_BoardDAO {
 
 
 	@Override
-	public List<String> readAttach(Integer bno) throws Exception {
-		// 게시물에 딸리 첨부파일 보기 매퍼쿼리 연결
+	public List<HashMap<String,Object>> readAttach(Integer bno) throws Exception {
+		// 게시물에 딸리 첨부파일 보기 매퍼쿼리 연결 해시#
 		return sqlSession.selectList("boardMapper.readAttach", bno);
 	}
 
@@ -93,6 +93,20 @@ public class BoardDAOImpl implements IF_BoardDAO {
 		paramMap.put("real_file_name", real_file_name);
 		sqlSession.insert("boardMapper.insertAttach", paramMap);
 		
+	}
+
+
+	@Override
+	public void deleteAttach(String save_file_name) throws Exception {
+		// 첨부파일 1개 삭제 매퍼쿼리 연결
+		sqlSession.delete("boardMapper.deleteAttach", save_file_name);
+	}
+
+
+	@Override
+	public void deleteAttachAll(Integer bno) throws Exception {
+		// 해당게시물의 모든 첨부파일 삭제 매퍼쿼리 연결
+		sqlSession.delete("boardMapper.deleteAttachAll", bno);
 	}
 
 }

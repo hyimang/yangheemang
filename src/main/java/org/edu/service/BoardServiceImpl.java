@@ -1,5 +1,6 @@
 package org.edu.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,7 +41,7 @@ public class BoardServiceImpl implements IF_BoardService {
 
 
 	@Override
-	public List<String> readAttach(Integer bno) throws Exception {
+	public List<HashMap<String,Object>> readAttach(Integer bno) throws Exception {
 		// bno번호에 해당하는 첨부파일 조회쿼리 DAI연결
 		return boardDAO.readAttach(bno);
 	}
@@ -65,10 +66,11 @@ public class BoardServiceImpl implements IF_BoardService {
 				
 	}
 
-
+	@Transactional
 	@Override
 	public void deleteBoard(Integer bno) throws Exception {
-		// 게시물 삭제 DAO연결
+		// 첨부파일 삭제 후 게시물 삭제 DAO연결
+		boardDAO.deleteAttachAll(bno);
 		boardDAO.deleteBoard(bno);
 		
 	}
