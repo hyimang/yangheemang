@@ -10,10 +10,13 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import org.edu.dao.IF_BoardDAO;
 import org.edu.service.IF_MemberService;
+import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +35,10 @@ public class CommonController {//컨트롤러에서 파일 삭제시 호출로 �
 	
 	@Inject
 	IF_MemberService memberService;
+	
+	@Inject
+	IF_BoardDAO boardDAO;//첨부파일을 개별 삭제하기 위해서 인젝트합니다.
+	
 	/**
 	 *첨부파일의 확장자를 비교해서 이미지인지, 엑셀,한글과 같은 일반 파일인지 확인하느 List객체변수
 	 *사용용도1: 게시물 상세보기 첨부파일이 이미지면 미리보기 이미지가 보이도록, 이미지가 아니면 다운로드 링크만 보이도록
@@ -80,7 +87,7 @@ public class CommonController {//컨트롤러에서 파일 삭제시 호출로 �
 	}
 	
 	//파일 업로드 -xml에서 지정한 폴더에 실제파일 저장을 구현한 메서드
-	public String[] fileUpload(MultipartFile file) throws IOException {
+	public String fileUpload(MultipartFile file) throws IOException {
 		String realFileName = file.getOriginalFilename();//jsp에서 전송한 파일명->확장자를 구하려고 사용
 		//폴더에 저장할 PK용 파일명 만들기
 		UUID uid = UUID.randomUUID();//유니크 아이디 생성 Unique ID: 폴더에 저장할 파일명으로 사용
@@ -88,11 +95,11 @@ public class CommonController {//컨트롤러에서 파일 삭제시 호출로 �
 		String saveFileName = uid.toString() + "." + StringUtils.getFilename(realFileName);
 		//값.split("정규표현식");(Regular Expresstion):realFileName을 .으로 분한해서 배열변수로 만드는 메서드
 		//예, abc.jpg -> realFileName[0] = abc, realFileName[1] = jpg으로 결과가 나옵니다.
-		String[] files = new String[] {saveFileName};//saveFileName 스트링형을배열변수로 fiels로 형변환
+		//String[] files = new String[] {saveFileName};//saveFileName 스트링형을배열변수로 fiels로 형변환
 		byte[] fileDate = file.getBytes();//jsp폼에서 전송된 파일이 fileDate변수(메모리)에 저장됨.
 		File target = new File(uploadPath, saveFileName);//파일저장하기 바로전 설정저장
 		FileCopyUtils.copy(fileDate, target);//실제로 target폴더에 파일로 저장된느 메서드=업로드 종료
-		return files;//1개 이상의 파일 업로드시 첨부파일명을 배열로 저장한 변수
+		return saveFileName;//copy로 업로드 이후에 저장된 real_file_name을 스트링문자열값 1개를 반환
 	}
 	
 	//REST-API서비스로 사용할때 @ResponseBody애노테이션으로 json텍스트데이터를 반환함(아래)
@@ -116,6 +123,24 @@ public class CommonController {//컨트롤러에서 파일 삭제시 호출로 �
 
 	public ArrayList<String> getCheckImgArray() {
 		return checkImgArray;
+	}
+	@Transactional
+	@RequestMapping(value="/file_delete",method=RequestMethod.POST)
+	@ResponseBody //메서드 응답을 내용만 받환받겠다고 명시
+	public String file_delete(@RequestParam("save_file_name")String save_file_name) {
+		String result = "";
+		try {
+			boardDAO.deleteAttach(save_file_name);//DB에서만 지워짐.
+			//실제 폴더에서 파일도 지우기(아래)
+			File target = new File(uploadPath, save_file_name);
+			if(target.exists()) {
+				target.delete();//폴더에서 기존첨부파일 지우기
+			}
+			result="success";
+		} catch (Exception e) {
+			result="fail : " + e.toString();
+		}
+		return result;
 	}
 
 	public void setCheckImgArray(ArrayList<String> checkImgArray) {
