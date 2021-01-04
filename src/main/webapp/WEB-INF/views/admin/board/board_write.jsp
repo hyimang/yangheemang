@@ -59,11 +59,15 @@
                   <div class="form-group" style="margin-bottom:0px;">
                   <label>attach</label>
                   </div>
+                  <!-- 첨부파일 업로드 jstl 구버젼 반복문으로 사용으로 2개로 변경 -->
+                  <c:forEach var="index" begin="0" end="1">
                   <div class="custom-file">
-                    <input type="file" name="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile" style="color:#999;">파일첨부</label>
+                    <input type="file" name="file" class="custom-file-input" id="customFile_${index}"><!-- 이름반복 피하려고 변수 추가 -->
+                    <label class="custom-file-label" for="customFile_${index}" style="color:#999;">파일첨부</label>
                   </div>
-                </div>
+                  <br><br>
+                  </c:forEach>
+                 </div>
                 <!-- /.card-body -->
               
            </div>
