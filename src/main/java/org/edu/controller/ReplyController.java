@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import org.edu.dao.IF_ReplyDAO;
 import org.edu.vo.ReplyVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ReplyController {
+	
+	@Inject 
+	private IF_ReplyDAO replyDAO;
 	
 	//댓글리스트 메서드
 	@RequestMapping(value="/reply/reply_list/{bno}", method=RequestMethod.POST)
@@ -44,11 +50,23 @@ public class ReplyController {
 		List<Object> dummyMapList = new ArrayList<Object>();
 		dummyMapList.add(0, dummyMap1);
 		dummyMapList.add(1, dummyMap2);
+		//resultMap.put("replyList", dummyMapList);//Put메서드로 Key:Val 제이슨 데이터 생성
 		//------------------------------------------------------
-		resultMap.put("replyList", dummyMapList);//Put메서드로 Key:Val 제이슨 데이터 생성
-		//resultMap을 Json데이터로 반환하려면, jackson-detabind 모듈이 필수(pom.xml)
-		result = new ResponseEntity<Map<String,Object>>(resultMap,HttpStatus.OK);
-		//HttpStatus.No_CONTENT는 204 조회된 데이터가 없음 코드
+		//dummyMapList 대신 DB tbl_reply테이블에서 조회된 결과값으로 대체.
+		try {
+			List<ReplyVO> replyList = replyDAO.select_reply(bno);
+			if(replyList.isEmpty()) {
+				//result = null; //jsp에서 받는 값이 text 일때 적용
+				result = new ResponseEntity<Map<String,Object>>(resultMap,HttpStatus.NO_CONTENT);//코드204
+			}else {
+				resultMap.put("replyList", replyList);
+				//resultMap을 Json데이터로 반환하려면, jackson-detabind 모듈이 필수(pom.xml)
+				result = new ResponseEntity<Map<String,Object>>(resultMap,HttpStatus.OK);
+				
+			}
+		} catch (Exception e) {
+			result = new ResponseEntity<Map<String,Object>>(HttpStatus.INTERNAL_SERVER_ERROR);//코드500
+		} 
 		return result;
 	}
 	

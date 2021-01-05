@@ -216,16 +216,20 @@ $(document).ready(function(){
 		//alert('디버그');
 		$.ajax({
 			type:"post", 
-			url:"/reply/reply_list/122",//122게시물번호에 대한 댓글몰록을 가져오는 URL
+			url:"/reply/reply_list/${boardVO.bno}",//122게시물번호에 대한 댓글몰록을 가져오는 URL
 			dataType:"json",//받을때 json 데이터를 받음
 			success:function(result){//result 에는 댓글목록ㅇ 있도록  json데이터로 받음
+				//alert("디버그" + result);
+				if(typeof result=="undefinded" || result=="" || result==null){
+					alert('조회된 값이 없습니다.');
+				}else{
 				//빵틀에 result데이터를 바인딩해서 출력함
 				//console.log(result);
 				//var jsonData = JSON.parse(result);//dataType:'text'일 때, 텍스트 자료를 제이슨 자료로 변환
 				//console.log("여기까지" + jsonData.replyList);//디버그용
 				//위에 정의한 printReplyList(Json데이터, 출력위치타겟, 빵틀-반복문); 데이터와 빵틀 바인딩
 				printReplyList(result.replyList, $(".time-label"), $("#template"));//화면에 출력하는 구현함수를 호출하면 실행.
-				
+				}
 			},
 			error:function(result){
 				alert("RestApi서버에 문제가 발생했습니다. 다음에 이용해주세요!")
