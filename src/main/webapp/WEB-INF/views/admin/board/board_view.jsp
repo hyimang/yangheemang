@@ -255,6 +255,7 @@ var replyList = function(){
 		success:function(result){//result 에는 댓글목록ㅇ 있도록  json데이터로 받음
 			//alert("디버그" + result);
 			if(typeof result=="undefinded" || result=="" || result==null){
+				$("#div_reply").empty();//조회된 값이 없을때, 화면 내용클리어
 				alert('조회된 값이 없습니다.');
 			}else{
 			//빵틀에 result데이터를 바인딩해서 출력함
@@ -305,8 +306,51 @@ $(document).ready(function(){
 		$.ajax({
 			type:"delete",
 			url:"/reply/reply_delete/${boardVO.bno}/"+rno,
-			dataType:"text",
-			header:
+			dataType:"text",//반환값 문자열
+			success:function(result){
+				if(result=="success") {
+					alert("삭제되었습니다.");
+					var reply_count = $("#reply_count").text();
+					$("#reply_count").text(parseInt(reply_count)-1);//$("영역").text(영역안쪽의 문자열)
+					replyList();//댓글리스트 메서드 호출 댓글영역 html재생성
+					$("#replyModal").modal("hide");//모달창(팝업창) 숨기기
+				}
+			},
+			error:function(result){
+				alert("RestAPI서버 오류로 삭제에 실패했습니다.");
+			}
+		});
+	});
+});
+</script>
+<!-- 댓글 수정 버튼 액션 처리(아래) -->
+<script>
+$(document).ready(function() {
+	$("#updateReplyBtn").on("click", function(){
+		var rno = $("#rno").val();//모달창의 input태그값 변수지정
+		var reply_text_modal = $("#reply_text_modal").val();//모달창의 input태그값 변수지정
+		$.ajax({
+			type:"patch",
+			url:"/reply/reply_update",
+			headers:{
+				"Content-Type":"application/json",
+				"X-HTTP-Method-Override":"PATCH"
+			},
+			data:JSON.stringify({//json데이터로 변환해서 RestAPI서버로 전송
+				reply_text:reply_text_modal,
+				rno:rno
+			}),
+			dataType:"text",//RestAPI에서 반환되는 값
+			success:function(result){
+				if(result=="success") {//=대입, ==비교, 1==='1'(비교+타입포함),
+					alert("수정에 성공하였습니다.");
+					$("#replyModal").modal("hide");
+					replyList();
+				}
+			},
+			error:function(result){
+				alert("RestAPI서버에 문제가 있습니다.");
+			}
 		});
 	});
 });
