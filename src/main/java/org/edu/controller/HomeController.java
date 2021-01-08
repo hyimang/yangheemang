@@ -21,6 +21,32 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	//사용자 홈페이지 회원 마이페이지 접근 매핑
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public String mypage() throws Exception{
+		
+		return "home/member/mypage";
+	}
+	
+	//사용자 홈페이지 회원가입 접근 매핑
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String join() throws Exception{
+		
+		return "home/join";
+	}
+	
+	//사용자 홈페이지 로그인 접근 매핑
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login() throws Exception{
+		
+		return "home/login";
+	}
+	//사용자 홈페이지 접근 매핑
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String home() throws Exception {
+		return "home/home";
+	}
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * 외부(웹브라우저)에서 루트 / 라는 이름으로 요청받으면, home.jsp파일에 화면출력(렌더링)이 됩니다.(아래)
@@ -28,29 +54,29 @@ public class HomeController {
 	 * 그래서 저장시 콜솔에 보시면 Reloading Context with...is completed  재실행되었다고 나옵니다.
 	 * 그래서, .java 클래스는 수정 후 약간 기다린 후 Reloading.. 메시지 후 결과 확인이 가능합니다.
 	 */
-	@RequestMapping(value="/contact",method=RequestMethod.POST)//POST방식은 데이터를 전송한느 역할
+	@RequestMapping(value="/sample/contact",method=RequestMethod.POST)//POST방식은 데이터를 전송한느 역할
 	public String contact_send() {
 		//데이터 전송 후에 다른 페이지이동이 필요. 새로고침을 방지하기 위해
-		return "redirect:/blog";//URL경로를 사용
+		return "redirect:/sample/blog";//URL경로를 사용
 	}
-	@RequestMapping(value="/contact",method=RequestMethod.GET)//GET방식은 폼페이지를 보여주는 역할
+	@RequestMapping(value="/sample/contact",method=RequestMethod.GET)//GET방식은 폼페이지를 보여주는 역할
 	public String contact( ) {
 		return "sample/contact";
 	}
-	@RequestMapping(value="/blog",method=RequestMethod.GET)
+	@RequestMapping(value="/sample/blog",method=RequestMethod.GET)
 	public String blog() {
 		return "sample/blog";
 	}
-	@RequestMapping(value="/work",method=RequestMethod.GET)
+	@RequestMapping(value="/sample/work",method=RequestMethod.GET)
 	public String work() {
 		return "sample/work";
 	}
-	@RequestMapping(value="/weare",method=RequestMethod.GET)
+	@RequestMapping(value="/sample/weare",method=RequestMethod.GET)
 	public String weare() {
 		//외부에서 /weare경로로 접근했을때, sample/weare.jsp와 매핑시키라는 의미
 		return "sample/weare";
 	}
-	@RequestMapping(value="/",method=RequestMethod.GET)//절대경로.
+	@RequestMapping(value="/sample",method=RequestMethod.GET)//절대경로.
 	public String index() {//메서드(함수)의 리턴(반환값출력)형태지정 메서드명(매개변수) {구현내용} String index() {}
 		//해석:상단 리퀘스트매핑에서 지정한 경로로 접근하게 되면, 아래 index()메서드를 실행해라
 		//public은 접근권한에 대한 키워드, public(공공-다른클래스에서 접근가능), private(내부-현재 HomeController클래스에서만 접근가능)

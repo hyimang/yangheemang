@@ -247,7 +247,7 @@ input::placeholder {
 	display: inline-block;
 	height: 45px;
 	padding: 0 10px;
-	background-color: #fff;
+	/* background-color: #fff; 이클립스 내장 브라우저에 나오지 않을 때 조치사항 */
 	line-height: normal;
 	font-size: 15px;
 }
@@ -274,8 +274,9 @@ input:-ms-input-placeholder {
 }
 @media all and (min-width: 801px) {
 /* 태블릿+PC용 */
+
 .app_list .tit_lbl {
-	width: 21%;
+	width: 20%;
 }
 .app_list .app_content {
 	width: 79%;

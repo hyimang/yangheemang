@@ -31,6 +31,12 @@ public class MainController {
 		memberVO3.setName("양희망");
 		memberVO3.setAge(3);
 		memberVO3.setPhoneNum("222-2222-2222");
+		
+		if(memberVO2 == memberVO3) {
+			System.out.println("동일객체=인스턴스");
+		}else {
+			System.out.println("다른오브젝트");
+		}
 		// 위 방법은 많은 레코드를 일일히 써야하기에 불편해서
 		// 위 각 3개의 레코드를 1군데 담을 배열 클래스 오브젝트를 하나 생성
 		// 실행 메서드 -배열방법
