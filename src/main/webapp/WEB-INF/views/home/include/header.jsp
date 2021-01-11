@@ -41,10 +41,10 @@ $(document).ready(function() {
 			<div class="header_cont">
 				<ul class="util clear">
 					<li><a href="/login">로그인</a></li>
-					<li><a href="join.html">회원가입</a></li>
+					<li><a href="/join">회원가입</a></li>
 					<!-- 로그인 후 보이는 메뉴(아래) -->
 					<li><a href="#">OOO님 환영합니다.</a></li>
-					<li><a href="mypage.html">마이페이지</a></li>
+					<li><a href="/member/mypage">마이페이지</a></li>
 					<li><a href="/admin">AdminLTE</a></li>
 				</ul>	
 				<nav>
@@ -57,11 +57,11 @@ $(document).ready(function() {
                             </ul>
                         </div>
 					</li>
-					<li><a href="board_list.html" class="openAll2">커뮤니티</a>
+					<li><a href="/home/board/board_list" class="openAll2">커뮤니티</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                                <li><a href="board_list.html">공지사항</a></li>
-                                <li><a href="board_list.html">겔러리게시판</a></li>
+                                <li><a href="/home/board/board_list">공지사항</a></li>
+                                <li><a href="/home/board/board_list">겔러리게시판</a></li>
                             </ul>
                         </div>
 					</li>

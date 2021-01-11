@@ -3,7 +3,6 @@
 
 <%@ include file="include/header.jsp" %>
 
-	
 	<!-- 메인콘텐츠영역 -->
 	<div id="container">
 		<!-- 모바일+PC 공통슬라이드영역 -->
@@ -48,7 +47,7 @@
             </div>
         </div>
         <!-- //모바일+PC 공통슬라이드영역 -->
-	
+
 		<!-- 갤러리최근게시물영역 -->
 		<div class="about_area">
 			<h2>겔러리 최근 게시물 <b>TOP 3</b></h2>
@@ -61,13 +60,13 @@
 							<span class="view">VIEW</span></a>
 					</li>
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.space_pop').show();">
-							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;" />
+							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO.</p>
 							<span class="view">VIEW</span></a>
 					</li>
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.program_pop').show();">
-							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;" />
+							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
 							<span class="view">VIEW</span></a>
@@ -100,5 +99,5 @@
 		<!-- //카카오톡상담및최근공지사항영역 -->
 	</div>
 	<!-- //메이콘텐츠영역 -->
-	
+
 <%@ include file="include/footer.jsp" %>
