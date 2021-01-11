@@ -22,6 +22,13 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	
+	//전역 홈페이지에서 스프링 진입전 발생하는 에러 페이지 처리
+		@RequestMapping(value="/home/error/404",method=RequestMethod.GET)
+		public String error404() throws Exception {
+			return "home/error/404";
+		}
+	 
 	//사용자 홈페이지 게시판 상세보기 매핑
 		@RequestMapping(value="/home/board/board_view",method=RequestMethod.GET)
 		public String board_view() throws Exception {
@@ -35,7 +42,7 @@ public class HomeController {
 	//위에서 받은 boardVO를 DAO에서 받아서DB테이블에 쿼리로 입력합니다.
 	@RequestMapping(value="/home/board/board_write",method=RequestMethod.POST)
 	public String board_write(BoardVO boardVO) throws Exception {
-		
+		//위에서 받은 boardVO를 서비스로 보내기
 		return "redirect:/home/board/board_view";
 	}
 		
