@@ -36,6 +36,7 @@ $(document).ready(function() {
 			<form id="search_form" name="search_form" action="/home/board/board_list" class="minisrch_form">
 				<fieldset>
 					<legend>검색</legend>
+					<input name="search_type" value="all" type="hidden">
 					<input name="search_keyword" type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 					<button class="btn_srch">검색</button>
 				</fieldset>
@@ -54,6 +55,9 @@ $(document).ready(function() {
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${board_list}" var="boardVO" varStatus="status">
+					
+					</c:forEach>
 					<tr>
 						<td>1</td>
 						<td class="tit_notice"><a href="/home/board/board_view">이번 여름 휴가 제주 갈까? 미션 투어 (스프링경비 50만원 지원)</a> </td>
