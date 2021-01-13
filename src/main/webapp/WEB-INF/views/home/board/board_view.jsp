@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link rel="stylesheet" href="/resources/home/css/board.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="/resources/plugins/fontawesome-free/css/all.min.css">
@@ -28,28 +29,40 @@
 		<!-- 메인본문영역 -->
 		<div class="bodytext_area box_inner">			
 			<ul class="bbsview_list">
-				<li class="bbs_title">박물관 미션 투어 응모 당첨자 발표</li>
-				<li class="bbs_hit">작성일 : <span>2018.08.09</span></li>
-				<li class="bbs_date">조회수 : <span>235</span></li>
+				<li class="bbs_title"><c:out value="${boardVO.title}"></c:out></li>
+				<!-- c:out태그는 jstl자바스탠다드태그라이브러리의 명령으로서 자바의 System.out.println() -->
+				<li class="bbs_hit">작성일 : <span><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.reg_date}" /></span></li>
+				<li class="bbs_date">조회수 : <span>${boardVO.view_count}</span></li>
 				<li class="bbs_content">
 					<div class="editer_content">
-					    안녕하세요. 믿을 수 있는 스프링정보, 스프링입니다.<br>
-                        박물관 미션투어에 관심과 참여 감사드립니다. <br>
-                        선정되신 분들도 진심으로 축하드립니다. <br>
-                        앞으로도 큰 관심 부탁드리며, 메일로도 안내 예정이니 참고하시기 바랍니다. <br>
-                        감사합니다. <br><br>
-                        [당첨자]<br>
-                        김용* kimyong***@naver.com <br>
-                        인봉* in2018a***@naver.com<br>
-                        예경* yyhong***@naver.com<br>
-                        한진* haha***@naver.com<br>
-                        박수* pky**@naver.com<br>
-                        명진* mma5**@nate.com<br>
-                        김영* rtfg6*@naver.com<br>
-                        서영* seo20**@gmail.com<br>
-                        윤소* yoon2***@naver.com<br>
-                        지은* ji***@daum.net
+					    ${boardVO.content}
                     </div>
+				</li>
+				<li class="bbs_title" style="height:inherit;">
+					첨부파일 다운로드
+					<c:forEach begin="0" end="1" var="index">
+						<c:if test="${boardVO.save_file_names[index] != null}">
+							<br>
+							<a href="/download?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}" >${boardVO.real_file_names[index]} 다운로드 링크[${index}]</a>
+							<c:set var="fileNameArray" value="${fn:split(boardVO.save_file_names[index],'.')}" />
+		                <c:set var="extName" value="${fileNameArray[fn:length(fileNameArray)-1]}" />
+		                <!-- length결과는 2 - 1 = 배열의 인덱스1 -->
+		                <!-- 첨부파일이 이미지 인지 아닌지 비교해서 img태그를 사용할 지 결정(아래) -->
+		                <!-- fn:contains함수({'jpg','gif','png'...}비교배열내용,JPG,jpg첨부파일확장자) -->
+		                <c:choose>
+		                	<c:when test="${fn:containsIgnoreCase(checkImgArray,extName)}">
+		                		<br>
+		                		<img style="width:100%;" src="/image_preview?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}">
+		                	</c:when>
+		                	<c:otherwise>
+		                		<c:out value="${checkImgArray}" />
+		                		<!-- 사용자홈페이지 메인 최근게시물 미리보기 이미지가 없을때 사용예정. -->
+		                	</c:otherwise>
+		                </c:choose>
+		                <!-- true이면 이미지파일 이란 의미 -->
+							
+						</c:if>
+					</c:forEach>
 				</li>
 			</ul>
 			<p class="btn_line txt_right">
