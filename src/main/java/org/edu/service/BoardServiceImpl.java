@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.edu.dao.IF_BoardDAO;
 import org.edu.dao.IF_ReplyDAO;
+import org.edu.vo.AttachVO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.PageVO;
 import org.springframework.stereotype.Service;
@@ -42,12 +43,17 @@ public class BoardServiceImpl implements IF_BoardService {
 		boardDAO.updateViewCount(bno);
 		return boardDAO.readBoard(bno);
 	}
-
-
+	
 	@Override
-	public List<HashMap<String,Object>> readAttach(Integer bno) throws Exception {
+	public List<AttachVO> readAttach(Integer bno) throws Exception {
 		// bno번호에 해당하는 첨부파일 조회쿼리 DAI연결
 		return boardDAO.readAttach(bno);
+	}
+
+	@Override
+	public List<HashMap<String,Object>> readAttach_noUse(Integer bno) throws Exception {
+		// bno번호에 해당하는 첨부파일 조회쿼리 DAI연결
+		return boardDAO.readAttach_noUse(bno);
 	}
 
 	@Transactional
