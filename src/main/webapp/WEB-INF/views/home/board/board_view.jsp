@@ -65,7 +65,11 @@
 				</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<a href="/home/board/board_list" class="btn_bbs">목록</a>
+				<a href="/home/board/board_list?page=${pageVO.page}" class="btn_bbs">목록</a>
+				<a href="/home/board/board_update?bno=${boardVO.bno}&page=${pageVO.page}" class="btn_bbs">
+				수정
+				</a>
+				<button class="btn_baseColor btn_smallColor">삭제</button>
 			</p>
 			
 		</div>
@@ -215,7 +219,7 @@ $(document).ready(function(){
 	$("#updateReplyBtn").on("click",function(){
 		if("${session_enabled}" == "") {
 			alert("회원만 댓글 수정이 가능합니다.");
-			location.href ="/login";
+			location.href = "/login";
 			return false;
 		}
 		var reply_text = $("#replytext").val();//겟Get
