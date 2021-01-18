@@ -66,7 +66,7 @@ $(document).ready(function() {
 		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
 							</td>
 							<td class="tit_notice">
-							<a href="/home/board/board_view?bno=${boardVO.bno}&page=${idx}&search_type=${pageVO.search_type}&search_keyword=${pageVO.search_keyword}">
+							<a href="/home/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}&search_keyword=${pageVO.search_keyword}">
 								<c:out value="${boardVO.title}" />
 							</a> </td>
 							<td>${boardVO.view_count}</td>
