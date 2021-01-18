@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="/resources/home/css/board.css">
 <script>
 if("${param.msg}" == "fail") {
-	alert('로그인에 실패했습니다. 이유는 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}');
-	//스프링 시큐리티는 세션 발생시킵니다. 세션스코프는 세션영역을 구성함 
+	alert('로그인에 실패 했습니다. 이유는 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}' );
+	//스프링 시큐리티는 세션발생시킵니다. 위 자바변수중 세션스코프는 세션영역을 말합니다.
 }
 </script>
+<%-- jsp에서 사용하는 자바주석 입니다. --%>
 	<!-- 메인콘텐츠영역 -->
 	<div id="container">
 		<!-- 메인상단위치표시영역 -->
@@ -27,11 +28,11 @@ if("${param.msg}" == "fail") {
 		<!-- 메인본문영역 -->
 		<div class="bodytext_area box_inner">
 			<!-- 폼영역 -->
-			<!-- 만약 스프링 시큐리티의 csrf 공격을 허용하지 않겠다(기본값)으로 되었다면 아래처럼 form을 바꿔야함 -->
-			<!-- secform태그로 form을 감싸주면, xss공격도 차단시킴 -->
-			<!-- sectoken태그로 csrf공격 차단시키는 태그 csrfInput -->
-			<!-- 
-			<secform:form method="POST" commandName="login_form" action="login.html" class="appForm">
+			<!-- 만약 스프링시큐리티의 csrf 공격을 허용하지 않겠다(기본값)으로 되었다면 아래처럼 form을 바꿔야함 -->
+			<!-- secform태그로 form을 감싸주면, xss공격 차단시킴 -->
+			<!-- sectoken태그로 csrf공격 차단시킴 -->
+			<!-- 주석문 commandName Deprecated(더이상 지원안함)되어서 modelAttribute 변경.
+			<secform:form method="POST" modelAttribute="login_form" name="login_form" action="login.html" class="appForm">
 				<sectoken:csrfInput/>
 			</secform:form>
 			 -->
@@ -59,5 +60,4 @@ if("${param.msg}" == "fail") {
 		<!-- //메인본문영역 -->
 	</div>
 	<!-- //메이콘텐츠영역 -->
-	
 <%@ include file="include/footer.jsp" %>

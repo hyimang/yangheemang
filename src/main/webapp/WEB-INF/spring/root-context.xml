@@ -19,22 +19,22 @@
 		<property name="password" value="apmsetup"></property>
 	</bean> -->
 	
-	<!-- HSQLDB FILE기반 사용 헤로쿠에 올릴때 생성경로는 /tmp/embeded/hsql_file.db , 로컬PC일때 경로는 e:/egov/workspace/embeded/hsql_file.db -->   
+	<!-- HSQLDB FILE기반 사용 헤로쿠에 올릴때 생성경로는 /tmp/embeded/hsql_file.db;hsqldb.lock_file=false , 로컬PC일때 경로는 e:/egov/workspace/embeded/hsql_file.db;hsqldb.lock_file=false -->   
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:file:/tmp/embeded/hsql_file.db" />
+		<property name="url" value="jdbc:hsqldb:file:e:/egov/workspace/embeded/hsql_file.db;hsqldb.lock_file=false" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
 	
 	<!-- CREATE TABLE 초기 1회만 실행 -->
-	
+	<!-- 
 	<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS"> 
 		<jdbc:script location="classpath:/db/embeded_hsql_file.sql" /> 
 	</jdbc:initialize-database>
-	
-	<!-- jdbc:hsqldb:mem:dataSource / jdbc:hsqldb:file:c:/egov/workspace/embeded/hsql_file.db  -->
+	 -->
+	<!-- jdbc:hsqldb:mem:dataSource / jdbc:hsqldb:file:c:/egov/workspace/embeded/hsql_file.db;hsqldb.lock_file=false  -->
 	<!-- 테스트 실행용 DB매니저 실행:실제 사용시 아래 value - - 공백제거 하세요. -->
 	
 	<!-- 
@@ -45,7 +45,7 @@
 	<property name="arguments">
 		<list>
 			<value>- -url</value>
-			<value>jdbc:hsqldb:file:e:/egov/workspace/embeded/hsql_file.db</value>
+			<value>jdbc:hsqldb:file:e:/egov/workspace/embeded/hsql_file.db;hsqldb.lock_file=false</value>
 			<value>- -user</value>
 			<value>sa</value>
 			<value>- -password</value>

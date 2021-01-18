@@ -159,7 +159,7 @@ public class DataSourceTest {
 	public void oldQueryTest() throws Exception{
 		//Connection connection = dataSource.getConnection();
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:hsqldb:file:e:/egov/workspace/embeded/hsql_file.db","sa","");
+		connection = DriverManager.getConnection("jdbc:hsqldb:file:e:/egov/workspace/embeded/hsql_file.db;hsqldb.lock_file=false","sa","");
 		//직접쿼리를 날립니다.
 		Statement stmt = connection.createStatement();
 		
